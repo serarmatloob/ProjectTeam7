@@ -15,6 +15,8 @@ public class Node {
         this.key= key;
         this.data=data;
     }
+    public Node(){
+    }
     public int getKey(){
     	return key;
     }

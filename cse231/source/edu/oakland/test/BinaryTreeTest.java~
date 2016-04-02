@@ -1,6 +1,6 @@
 package edu.oakland.test;
 import junit.framework.*; 
-public class binaryTest extends TestCase{
+public class BinaryTreeTest extends TestCase{
 	
 	
 }

@@ -11,20 +11,20 @@ import java.util.Random;
 public class BinaryTree {
 
     private Node root;
-    int leftCount;
-    int rightCount;
-    int integers;
+    private int leftCount;
+    private int rightCount;
+    private int integers;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         BinaryTree theTree = new BinaryTree();
         Random random = new Random();
         long startTime;
         long endTime;
         int size = 20000;
+        theTree.integers=0;
         
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
@@ -53,8 +53,8 @@ public class BinaryTree {
         System.out.println("left childs: " + theTree.leftCount);
     }
 
-    private void addNode(int key, int name) {
-        Node newNode = new Node(key, name);
+    private void addNode(int key, int data) {
+        Node newNode = new Node(key, data);
         if (root == null) {
             root = newNode;
         } else {
@@ -62,17 +62,17 @@ public class BinaryTree {
             Node parent;
             while (true) {
                 parent = focusNode;
-                if (key < focusNode.key) {
-                    focusNode = focusNode.leftChild;
+                if (key < focusNode.getKey()) {
+                    focusNode = focusNode.getLeftChild();
                     if (focusNode == null) {
-                        parent.leftChild = newNode;
+                        parent.setLeftChild(newNode) ;
                         return;
                     }
 
                 } else {
-                    focusNode = focusNode.rightChild;
+                    focusNode = focusNode.getRightChild();
                     if (focusNode == null) {
-                        parent.rightChild = newNode;
+                        parent.setRightChild(newNode);
                         return;
                     }
                 }
@@ -85,22 +85,22 @@ private void preorderTraverseTree(Node focusNode) {
          
         //System.out.println("Entered preorder function");
         if (focusNode != null) {
-            if (focusNode.rightChild != null && integers<2) {
+            if (focusNode.getRightChild() != null && integers<2) {
                 rightCount++;
-                 if(focusNode.rightChild.value % 2 != 0) {
-                    System.out.println(focusNode.rightChild);
+                 if(focusNode.getRightChild().getData() % 2 != 0) {
+                    System.out.println(focusNode.getRightChild());
                     integers++;
                 }
             }
-            if (focusNode.leftChild != null && integers<2) {
+            if (focusNode.getLeftChild() != null && integers<2) {
                 leftCount++;
-                if (focusNode.leftChild.value % 2 != 0) {
-                    System.out.println(focusNode.leftChild);
+                if (focusNode.getLeftChild().getData() % 2 != 0) {
+                    System.out.println(focusNode.getLeftChild());
                     integers++;
                 }
             }
-            preorderTraverseTree(focusNode.leftChild);
-            preorderTraverseTree(focusNode.rightChild);
+            preorderTraverseTree(focusNode.getLeftChild());
+            preorderTraverseTree(focusNode.getRightChild());
         }
     }
 }
