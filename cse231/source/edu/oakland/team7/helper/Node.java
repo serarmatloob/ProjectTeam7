@@ -1,69 +1,60 @@
 package edu.oakland.team7.helper;
 
 
-public class Node {	
-
-    private int key;
-    private int data;
-    private Node leftChild;
-    private Node rightChild;
+public class Node {
 
 
-    public Node(int key, int data) {
+	private int key;
+	private int data;
+	private Node leftChild;
+	private Node rightChild;
 
-        this.key = key;
-        this.data = data;
 
-    }
-    
+	public Node(int key, int data) {
 
-    public String toString() {
+		this.key = key;
+		this.data = data;
+	}
 
-        return data + " has the key " + key;
 
-    }
-    
+	public String toString() {
 
-    public int getKey() {
+		return data + " has the key: " + key;
+	}
 
-        return key;
 
-    }
-    
+	public int getKey() {
 
-    public int getData() {
+		return key;
+	}
 
-        return data;
 
-    }
-    
+	public int getData() {
 
-    public Node getLeftChild() {
+		return data;
+	}
 
-        return leftChild;
 
-    }
-    
+	public Node getLeftChild() {
 
-    public Node getRightChild() {
+		return leftChild;
+	}
 
-        return rightChild;
 
-    }
-    
+	public Node getRightChild() {
 
-    public void setLeftChild(Node newNode) {
+		return rightChild;
+	}
 
-        this.leftChild = newNode;
 
-    }
-    
+	public void setLeftChild(Node newNode) {
 
-    public void setRightChild(Node newNode) {
+		this.leftChild = newNode;
+	}
 
-        this.rightChild = newNode;
 
-    }
+	public void setRightChild(Node newNode) {
 
-    
+		this.rightChild = newNode;
+	}
 }

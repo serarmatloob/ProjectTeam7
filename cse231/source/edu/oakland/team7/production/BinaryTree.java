@@ -1,126 +1,136 @@
 package edu.oakland.team7.production;
-
 import edu.oakland.team7.helper.*;
+
 
 public class BinaryTree {
 
 
-    private int[] keyArray, dataArray;
-    private int[] oddNumberArray;
-    private int oddNumberArraySize = 2; // size represents how many odd numbers to find
-    private int startRange = 900; // start of range for the value an odd number must have
-    private int endRange = 9000; // end of range for the value an odd number must have
-    private int oddNumber;
-    private Node root;
+	private int[] keyArray, dataArray;
+	private int[] oddNumberArray;
+	private int oddNumberArraySize = 2; // size represents how many odd numbers to find
+	private int startRange = 900; // start of range for the value an odd number must have
+	private int endRange = 9000; // end of range for the value an odd number must have
+	private int oddNumber;
+	private Node root;
 
 
-    public BinaryTree(int[] keyArray, int[] dataArray) {
+	public BinaryTree(int[] keyArray, int[] dataArray) {
 
-        this.keyArray = keyArray;
-        this.dataArray = dataArray;
+		this.keyArray = keyArray;
+		this.dataArray = dataArray;
 
-        oddNumberArray = new int[oddNumberArraySize];
+		oddNumberArray = new int[oddNumberArraySize];
 
-        buildBinaryTree();
-    }
-
-
-    public void buildBinaryTree() {
-
-        for (int i = 0; i < keyArray.length; i++) {
-
-            addNode(keyArray[i], dataArray[i]);
-
-        }
-    }
+		buildBinaryTree();
+	}
 
 
-    public void addNode(int key, int data) {
+	public void buildBinaryTree() {
 
-        Node newNode = new Node(key, data);
+		for (int i = 0; i < keyArray.length; i++) {
 
-        if (root == null) {
-
-            root = newNode;
-
-        } else {
-
-            Node focusNode = root;
-
-            Node parent;
-
-            while (true) {
-
-                parent = focusNode;
-
-                if (key < focusNode.getKey()) {
-
-                    focusNode = focusNode.getLeftChild();
-
-                    if (focusNode == null) {
-
-                        parent.setLeftChild(newNode);
-                        return;
-                    }
-                    
-                } else {
-
-                    focusNode = focusNode.getRightChild();
-
-                    if (focusNode == null) {
-
-                        parent.setRightChild(newNode);
-                        return;
-                    }
-                }
-            }
-        }
-    }
+			addNode(keyArray[i], dataArray[i]);
+		}
+	}
 
 
-    public void preorderTraverseTree(Node focusNode) {
+	public void addNode(int key, int data) {
 
-        if (focusNode != null) {
+		Node newNode = new Node(key, data);
 
-            if (focusNode.getData() % 2 == 1) {
+		if (root == null) {
 
-                oddNumber = focusNode.getData();
+			root = newNode;
+		}
 
-                if (oddNumber >= startRange && oddNumber <= endRange) {
+		else {
 
-                    for (int i = 0; i < oddNumberArray.length; i++) {
+			Node focusNode = root;
 
-                        if (oddNumberArray[i] == 0) {
+			Node parent;
 
-                            oddNumberArray[i] = oddNumber;
-                            break;
-                        }
-                    }
-                }
-            }
+			while (true) {
 
-            preorderTraverseTree(focusNode.getLeftChild());
-            preorderTraverseTree(focusNode.getRightChild());
-        }
-    }
+				parent = focusNode;
+
+				if (key < focusNode.getKey()) {
+
+					focusNode = focusNode.getLeftChild();
+
+					if (focusNode == null) {
+
+						parent.setLeftChild(newNode);
+						return;
+					}
+				}
+
+				else {
+
+					focusNode = focusNode.getRightChild();
+
+					if (focusNode == null) {
+
+						parent.setRightChild(newNode);
+						return;
+					}
+				}
+			}
+		}
+	}
 
 
-    public int[] getOddNumberArray() {
-    	
-    	System.out.println();
-    	System.out.print("The odd numbers are: ");
-    	for (int num : oddNumberArray) {
-    		System.out.format("| %d | ", num);
-    	}
-    	System.out.println();
-    	System.out.println();
-        return oddNumberArray;
-    }
-    
-    
-    public Node getRoot() {
-    	
-    	return root;
-    	
-    }
+	public void preorderTraverseTree(Node focusNode) {
+
+		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
+
+			if (focusNode.getData() % 2 == 1) {
+
+				oddNumber = focusNode.getData();
+
+				if (oddNumber >= startRange && oddNumber <= endRange) {
+
+					for (int i = 0; i < oddNumberArray.length; i++) {
+
+						if (oddNumberArray[i] == 0) {
+							oddNumberArray[i] = oddNumber;
+							break;
+						}
+					}
+				}
+			}
+
+			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+
+				preorderTraverseTree(focusNode.getLeftChild());
+			}
+
+			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+				
+				preorderTraverseTree(focusNode.getRightChild());
+			}
+		}
+	}
+
+
+	public int[] getValue() {
+
+		System.out.println();
+		System.out.print("The odd numbers are: ");
+
+		for (int num : oddNumberArray) {
+
+			System.out.format("| %d ", num);
+		}
+
+		System.out.println();
+		System.out.println();
+
+		return oddNumberArray;
+	}
+
+
+	public Node getRoot() {
+
+		return root;
+	}
 }
