@@ -52,24 +52,20 @@ public class BinaryTreeTest extends TestCase {
         binaryTree = new BinaryTree(keyArray, dataArray);
         
 	}
-	
-	
+
 	
 	
 	public void testBinaryTree() {
 		
-
-        // This array will fail because the 1st number is even
-        // System.out.println("This is a test. Above Arrays are not in use");
-        // int[] oddNumberArray = {900, 8651};
-        
-        
-        // Uncomment whichever section you want to use for test
+		// Uncomment whichever section you want to use for test
 		
 		// This is the actual binary tree returning an array
 		binaryTree.preorderTraverseTree(binaryTree.getRoot());
 		int[] oddNumberArray = binaryTree.getOddNumberArray();
-        
+
+        // This array will fail because the 1st number is even
+        // System.out.println("This is a test. Above Arrays are not in use");
+        // int[] oddNumberArray = {900, 8651};
         
         // This array will fail because the 2nd number is even
         // System.out.println("This is a test. Above Arrays are not in use");
