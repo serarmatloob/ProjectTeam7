@@ -22,7 +22,6 @@ public class BinaryTree {
         oddNumberArray = new int[oddNumberArraySize];
 
         buildBinaryTree();
-        findOddNumbers(root);
     }
 
 
@@ -79,7 +78,7 @@ public class BinaryTree {
     }
 
 
-    public void findOddNumbers(Node focusNode) {
+    public void preorderTraverseTree(Node focusNode) {
 
         if (focusNode != null) {
 
@@ -100,14 +99,28 @@ public class BinaryTree {
                 }
             }
 
-            findOddNumbers(focusNode.getLeftChild());
-            findOddNumbers(focusNode.getRightChild());
+            preorderTraverseTree(focusNode.getLeftChild());
+            preorderTraverseTree(focusNode.getRightChild());
         }
     }
 
 
     public int[] getOddNumberArray() {
-
+    	
+    	System.out.println();
+    	System.out.print("The odd numbers are: ");
+    	for (int num : oddNumberArray) {
+    		System.out.format("| %d | ", num);
+    	}
+    	System.out.println();
+    	System.out.println();
         return oddNumberArray;
+    }
+    
+    
+    public Node getRoot() {
+    	
+    	return root;
+    	
     }
 }
