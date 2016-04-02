@@ -31,22 +31,18 @@ public class BinaryTree {
             list.add(i);
         }
         
-        int[] a = new int[size];
-        for (int count = 0; count < size; count++) {
-            a[count] = list.remove((int) (Math.random() * list.size()));
+        int[] keys = new int[size];
+        for (int i = 0; i < size; i++) {
+            keys[i] = list.remove((int) (Math.random() * list.size()));
         }
-        int[] numbers = new int[size];
-        for (int i = 0; i < numbers.length; i++) {
+        int[] data = new int[size];
+        for (int i = 0; i < data.length; i++) {
             int number = random.nextInt(1000);
-            numbers[i] = number;
-        }
-        int[] array = new int[size];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = a[i];
+            data[i] = number;
         }
 
-        for (int i = 0; i < array.length; i++) {
-            theTree.addNode(array[i], numbers[i]);
+        for (int i = 0; i < keys.length; i++) {
+            theTree.addNode(keys[i], data[i]);
         }
 
         startTime = System.currentTimeMillis();
@@ -103,8 +99,8 @@ private void preorderTraverseTree(Node focusNode) {
                     integers++;
                 }
             }
-            preorderTraverseTree2(focusNode.leftChild);
-            preorderTraverseTree2(focusNode.rightChild);
+            preorderTraverseTree(focusNode.leftChild);
+            preorderTraverseTree(focusNode.rightChild);
         }
     }
 }
