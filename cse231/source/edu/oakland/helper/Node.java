@@ -1,26 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package binary;
+package edu.oakland.helper;
 
 /**
  *
  * @author Serar
  */
-class Node {
+public class Node {
 
     int key;
     int value;
-    String name;
     Node leftChild;
     Node rightChild;
     
-    Node(int intKey, int stringName){
-        this.key= intKey;
-        this.value=stringName;
-        //this.name = stringName;
+    Node(int key, int value){
+        this.key= key;
+        this.value=value;
     }
     @Override
     public String toString(){
