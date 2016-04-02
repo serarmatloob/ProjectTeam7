@@ -13,13 +13,13 @@ public class BinaryTreeTest extends TestCase {
     
 	public void setUp() {
 		
-		// Build random Array for test
+	// Build random Array for test
         keyArray = new int[arraySize];
         dataArray = new int[arraySize];
         
         for (int i = 0; i < arraySize; i++) {
-        	
-        	// Min + (int)(Math.random() * ((Max - Min) + 1))
+		
+	     // Min + (int)(Math.random() * ((Max - Min) + 1))
             keyArray[i] = arraySize + (int)(Math.random() * (((arraySize * 2) + arraySize) + 1));
             dataArray[i] = 20 + (int)(Math.random() * ((20000 - 20) + 1));
             
@@ -58,11 +58,11 @@ public class BinaryTreeTest extends TestCase {
 	public void testBinaryTree() {
 	    
 		
-		// Uncomment whichever section you want to use for test
+	// Uncomment whichever section you want to use for test
 		
-		// This is the actual binary tree returning an array
-		binaryTree.preorderTraverseTree(binaryTree.getRoot());
-		int[] oddNumberArray = binaryTree.getOddNumberArray();
+	// This is the actual binary tree returning an array
+	binaryTree.preorderTraverseTree(binaryTree.getRoot());
+	int[] oddNumberArray = binaryTree.getOddNumberArray();
 
         // This array will fail because the 1st number is even
         // System.out.println("This is a test. Above Arrays are not in use");
@@ -112,6 +112,7 @@ public class BinaryTreeTest extends TestCase {
         	}
         	
         }
+
 		
         assertTrue(isOddInRange);
         
