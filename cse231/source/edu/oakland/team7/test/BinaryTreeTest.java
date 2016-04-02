@@ -56,6 +56,7 @@ public class BinaryTreeTest extends TestCase {
 	
 	
 	public void testBinaryTree() {
+	    
 		
 		// Uncomment whichever section you want to use for test
 		
