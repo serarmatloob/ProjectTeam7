@@ -27,14 +27,14 @@ public class Node {
     public Node getRightChild(){
     	return rightChild;
     }
-    public void setRightChild(Node leftNode){
-    	this.leftChild=leftNode;
-    }
-    public void setLeftChild(Node rightNode){
+    public void setRightChild(Node rightNode){
     	this.rightChild=rightNode;
+    }
+    public void setLeftChild(Node leftNode){
+    	this.leftChild=leftNode;
     }
      @Override
     public String toString(){
-        return data +" Which has the key "+key;
+        return data +" has the key "+key;
     }
 }

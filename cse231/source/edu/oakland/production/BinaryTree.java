@@ -24,6 +24,7 @@ public class BinaryTree {
         long startTime;
         long endTime;
         int size = 20000;
+        theTree.integers=0;
         
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
@@ -52,8 +53,8 @@ public class BinaryTree {
         System.out.println("left childs: " + theTree.leftCount);
     }
 
-    private void addNode(int key, int name) {
-        Node newNode = new Node(key, name);
+    private void addNode(int key, int data) {
+        Node newNode = new Node(key, data);
         if (root == null) {
             root = newNode;
         } else {
