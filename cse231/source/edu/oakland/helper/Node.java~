@@ -6,12 +6,12 @@ package edu.oakland.helper;
  */
 public class Node {
 
-    public int key;
-    public int value;
-    public Node leftChild;
-    public Node rightChild;
+    int key;
+    int value;
+    Node leftChild;
+    Node rightChild;
     
-    public Node(int key, int value){
+    Node(int key, int value){
         this.key= key;
         this.value=value;
     }
