@@ -11,14 +11,15 @@ import java.util.Random;
 public class BinaryTree {
 
     private Node root;
-    private int leftCount;
-    private int rightCount;
-    private int integers;
+    int leftCount;
+    int rightCount;
+    int integers;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // TODO code application logic here
         BinaryTree theTree = new BinaryTree();
         Random random = new Random();
         long startTime;
@@ -61,17 +62,17 @@ public class BinaryTree {
             Node parent;
             while (true) {
                 parent = focusNode;
-                if (key < focusNode.getKey()) {
-                    focusNode = focusNode.getLeftChild();
+                if (key < focusNode.key) {
+                    focusNode = focusNode.leftChild;
                     if (focusNode == null) {
-                        parent.setLeftChild(newNode) ;
+                        parent.leftChild = newNode;
                         return;
                     }
 
                 } else {
-                    focusNode = focusNode.getRightChild();
+                    focusNode = focusNode.rightChild;
                     if (focusNode == null) {
-                        parent.setRightChild(newNode);
+                        parent.rightChild = newNode;
                         return;
                     }
                 }
@@ -84,22 +85,22 @@ private void preorderTraverseTree(Node focusNode) {
          
         //System.out.println("Entered preorder function");
         if (focusNode != null) {
-            if (focusNode.getRightChild() != null && integers<2) {
+            if (focusNode.rightChild != null && integers<2) {
                 rightCount++;
-                 if(focusNode.getRightChild().getData() % 2 != 0) {
-                    System.out.println(focusNode.getRightChild());
+                 if(focusNode.rightChild.value % 2 != 0) {
+                    System.out.println(focusNode.rightChild);
                     integers++;
                 }
             }
-            if (focusNode.getLeftChild() != null && integers<2) {
+            if (focusNode.leftChild != null && integers<2) {
                 leftCount++;
-                if (focusNode.getLeftChild().getData() % 2 != 0) {
-                    System.out.println(focusNode.getLeftChild());
+                if (focusNode.leftChild.value % 2 != 0) {
+                    System.out.println(focusNode.leftChild);
                     integers++;
                 }
             }
-            preorderTraverseTree(focusNode.getLeftChild());
-            preorderTraverseTree(focusNode.getRightChild());
+            preorderTraverseTree(focusNode.leftChild);
+            preorderTraverseTree(focusNode.rightChild);
         }
     }
 }
