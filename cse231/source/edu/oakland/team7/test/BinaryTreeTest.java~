@@ -13,30 +13,39 @@ public class BinaryTreeTest extends TestCase {
     
 	public void setUp() {
 		
-		
 		// Build random Array for test
         keyArray = new int[arraySize];
         dataArray = new int[arraySize];
+        
         for (int i = 0; i < arraySize; i++) {
+        	
+        	// Min + (int)(Math.random() * ((Max - Min) + 1))
             keyArray[i] = arraySize + (int)(Math.random() * (((arraySize * 2) + arraySize) + 1));
-
-            // Min + (int)(Math.random() * ((Max - Min) + 1))
             dataArray[i] = 20 + (int)(Math.random() * ((20000 - 20) + 1));
+            
         }
+        
         System.out.println();
         
         
         // Print out currently used array
         System.out.println("Keys:");
         for (int num : keyArray) {
+        	
             System.out.format("| %d | ", num);
+            
         }
+        
         System.out.println();
         System.out.println();
+        
         System.out.println("Data:");
         for (int num : dataArray) {
+        	
             System.out.format("| %d | ", num);
+            
         }
+        
         System.out.println();
         System.out.println();
         
@@ -44,6 +53,8 @@ public class BinaryTreeTest extends TestCase {
 		binaryTree = new BinaryTree(keyArray, dataArray);
 		
 	}
+	
+	
 	
 	public void testBinaryTree() {
 		

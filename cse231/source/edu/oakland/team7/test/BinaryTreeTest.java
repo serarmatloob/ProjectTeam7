@@ -49,9 +49,8 @@ public class BinaryTreeTest extends TestCase {
         System.out.println();
         System.out.println();
         
+        binaryTree = new BinaryTree(keyArray, dataArray);
         
-		binaryTree = new BinaryTree(keyArray, dataArray);
-		
 	}
 	
 	
@@ -112,8 +111,10 @@ public class BinaryTreeTest extends TestCase {
         		break;
         		
         	}
+        	
         }
 		
         assertTrue(isOddInRange);
+        
 	}
 }
