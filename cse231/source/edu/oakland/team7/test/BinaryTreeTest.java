@@ -5,7 +5,7 @@ import java.lang.*;
 
 public class BinaryTreeTest extends TestCase {
 
-	private int arraySize = 20;
+	private int arraySize = 10000000;
 	private int[] keyArray;
 	private int[] dataArray;
 	private BinaryTree binaryTree;
@@ -22,12 +22,12 @@ public class BinaryTreeTest extends TestCase {
 			// Min + (int)(Math.random() * ((Max - Min) + 1))
 			// Try increasing the maximum random value if you want to make this program more complex.
 			keyArray[i] = arraySize + (int)(Math.random() * (((arraySize * 2) + arraySize) + 1));
-			dataArray[i] = dataArray[i] = 20 + (int)(Math.random() * ((20000 - 20) + 1));
+			dataArray[i] = dataArray[i] = 20 + (int)(Math.random() * ((4000000 - 20) + 1));
 		}
 
 		System.out.println();
 
-
+		/*
 		// Print out current array of keys and data
 		for (int i = 0; i < arraySize; i++) {
 
@@ -35,6 +35,7 @@ public class BinaryTreeTest extends TestCase {
 		}
 
 		System.out.println();
+		*/
 
 
 		binaryTree = new BinaryTree(keyArray, dataArray);

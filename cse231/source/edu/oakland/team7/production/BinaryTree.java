@@ -9,7 +9,7 @@ public class BinaryTree {
 	private int[] oddNumberArray;
 	private int oddNumberArraySize = 2; // size represents how many odd numbers to find
 	private int startRange = 900; // start of range for the value an odd number must have
-	private int endRange = 9000; // end of range for the value an odd number must have
+	private int endRange = 905; // end of range for the value an odd number must have
 	private int oddNumber;
 	private Node root;
 	private long startTime;
@@ -93,7 +93,6 @@ public class BinaryTree {
 						if (oddNumberArray[i] == 0) {
 
 							oddNumberArray[i] = oddNumber;
-							System.out.println("just added a number");
 							break;
 						}
 					}
@@ -132,7 +131,6 @@ public class BinaryTree {
 						if (oddNumberArray[i] == 0) {
 
 							oddNumberArray[i] = oddNumber;
-							System.out.println("just added a number");
 							break;
 						}
 					}
@@ -171,7 +169,6 @@ public class BinaryTree {
 						if (oddNumberArray[i] == 0) {
 
 							oddNumberArray[i] = oddNumber;
-							System.out.println("just added a number");
 							break;
 						}
 					}
@@ -197,10 +194,18 @@ public class BinaryTree {
 
 	public void traverseTree() {
 
+		System.out.println("This is using IN-order traversal to find the odd numbers.");
+		System.out.println();
+		System.out.println("The size of random array is: 10,000,000");
+		System.out.println("The range of possible random numbers generated in array is: 20 to 4,000,000");
+		System.out.println("The range of numbers that we are looking for that contain odd ints is: 900 to 905");
+		System.out.println();
+
+
 		startTime = System.currentTimeMillis();
-		// inOrderTraverseTree(root);
+		inOrderTraverseTree(root);
 		// postOrderTraverseTree(root);
-		preOrderTraverseTree(root);
+		// preOrderTraverseTree(root);
 		endTime = System.currentTimeMillis();
 	}
 }
