@@ -1,12 +1,16 @@
 package edu.oakland.team7.test;
 import edu.oakland.team7.production.*;
 import junit.framework.*;
+import java.lang.*;
 
 
 public class BinaryTreeTest extends TestCase {
 
 
-	private int arraySize = 20000;
+	private int arraySize = 20;
+	private int numberOfReturns = 2;
+	private int startRangeToBeFound = 900;
+	private int endRangeToBeFound = 9000;
 	private int[] keyArray;
 	private int[] dataArray;
 	private BinaryTree binaryTree;
@@ -15,14 +19,13 @@ public class BinaryTreeTest extends TestCase {
 
 	public void setUp() {
 
-		//Build random array for testing
+		// Build random array for testing
 		keyArray = new int[arraySize];
 		dataArray = new int[arraySize];
 
-
 		for (int i = 0; i < arraySize; i++) {
 
-			//Min + (int)(Math.random() * ((Max - Min) + 1))
+			// Min + (int)(Math.random() * ((Max - Min) + 1))
 			keyArray[i] = arraySize + (int)(Math.random() * (((arraySize * 2) + arraySize) + 1));
 			dataArray[i] = dataArray[i] = 20 + (int)(Math.random() * ((20000 - 20) + 1));
 		}
@@ -30,37 +33,44 @@ public class BinaryTreeTest extends TestCase {
 		System.out.println();
 
 
-		//Print out current array of keys and data
-		System.out.println("Keys:");
+		// Print out current array of keys and data
+		for (int i = 0; i < arraySize; i++) {
 
-		for (int num : keyArray) {
-
-			System.out.format("| %d ", num);
+			System.out.println(dataArray[i] + " has the key: " + keyArray[i]);
 		}
 
-		System.out.println();
-		System.out.println();
-		System.out.println("Data:");
-
-		for (int num : dataArray) {
-
-			System.out.format("| %d ", num);
-		}
-
-		System.out.println();
 		System.out.println();
 
 
 		binaryTree = new BinaryTree(keyArray, dataArray);
+
+		// Change BinaryTree specifics here, but you dont have to. 
+		// There are defaults set in the Binary class, so these 2 methods can be commented out.
+		binaryTree.setNumberOfOddReturns(numberOfReturns);
+		binaryTree.setRangeToBeFound(startRangeToBeFound, endRangeToBeFound);
 	}
 
 
 	public void testBinaryTree() {
 
-
 		// Uncomment whichever section you want to use for test
-		binaryTree.preorderTraverseTree(binaryTree.getRoot());
+
 		int[] oddNumberArray = binaryTree.getValue();
+		System.out.println("The elapsed time is: " + binaryTree.getTime());
+
+
+		// Print out oddNumberArray
+		System.out.println();
+		System.out.print("The odd numbers are: ");
+
+		for (int num : oddNumberArray) {
+
+			System.out.format("| %d ", num);
+		}
+
+		System.out.println("|");
+		System.out.println();
+
 
 		// finding out if oddNumberArray contains odd ints within given range
 		for (int num : oddNumberArray) {
@@ -85,7 +95,6 @@ public class BinaryTreeTest extends TestCase {
 				break;
 			}
 		}
-
 
 		assertTrue(isOddInRange);
 		

@@ -1,5 +1,6 @@
 package edu.oakland.team7.production;
 import edu.oakland.team7.helper.*;
+import java.lang.*;
 
 
 public class BinaryTree {
@@ -12,6 +13,8 @@ public class BinaryTree {
 	private int endRange = 9000; // end of range for the value an odd number must have
 	private int oddNumber;
 	private Node root;
+	private long startTime;
+	private long endTime;
 
 
 	public BinaryTree(int[] keyArray, int[] dataArray) {
@@ -22,6 +25,7 @@ public class BinaryTree {
 		oddNumberArray = new int[oddNumberArraySize];
 
 		buildBinaryTree();
+		traverseTree();
 	}
 
 
@@ -79,7 +83,7 @@ public class BinaryTree {
 	}
 
 
-	public void preorderTraverseTree(Node focusNode) {
+	public void preOrderTraverseTree(Node focusNode) {
 
 		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
 
@@ -92,6 +96,7 @@ public class BinaryTree {
 					for (int i = 0; i < oddNumberArray.length; i++) {
 
 						if (oddNumberArray[i] == 0) {
+
 							oddNumberArray[i] = oddNumber;
 							break;
 						}
@@ -101,29 +106,52 @@ public class BinaryTree {
 
 			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
 
-				preorderTraverseTree(focusNode.getLeftChild());
+				preOrderTraverseTree(focusNode.getLeftChild());
 			}
 
 			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
 				
-				preorderTraverseTree(focusNode.getRightChild());
+				preOrderTraverseTree(focusNode.getRightChild());
+			}
+		}
+	}
+
+
+	public void inOrderTraverseTree(Node focusNode) {
+
+		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
+
+			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+
+				inOrderTraverseTree(focusNode.getLeftChild());
+			}
+
+			if (focusNode.getData() % 2 == 1) {
+
+				oddNumber = focusNode.getData();
+
+				if (oddNumber >= startRange && oddNumber <= endRange) {
+
+					for (int i = 0; i < oddNumberArray.length; i++) {
+
+						if (oddNumberArray[i] == 0) {
+
+							oddNumberArray[i] = oddNumber;
+							break;
+						}
+					}
+				}
+			}
+
+			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+
+				inOrderTraverseTree(focusNode.getRightChild());
 			}
 		}
 	}
 
 
 	public int[] getValue() {
-
-		System.out.println();
-		System.out.print("The odd numbers are: ");
-
-		for (int num : oddNumberArray) {
-
-			System.out.format("| %d ", num);
-		}
-
-		System.out.println();
-		System.out.println();
 
 		return oddNumberArray;
 	}
@@ -132,5 +160,33 @@ public class BinaryTree {
 	public Node getRoot() {
 
 		return root;
+	}
+
+
+	public long getTime() {
+
+		return (endTime - startTime);
+	}
+
+
+	public void traverseTree() {
+
+		startTime = System.currentTimeMillis();
+		inOrderTraverseTree(root);
+		// preOrderTraverseTree(root);
+		endTime = System.currentTimeMillis();
+	}
+
+
+	public void setRangeToBeFound(int startRange, int endRange) {
+
+		this.startRange = startRange;
+		this.endRange = endRange;
+	}
+
+
+	public void setNumberOfOddReturns(int numOfReturns) {
+
+		this.oddNumberArraySize = numOfReturns;
 	}
 }
