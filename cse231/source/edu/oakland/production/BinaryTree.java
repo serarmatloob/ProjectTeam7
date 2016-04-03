@@ -18,6 +18,7 @@ public class BinaryTree {
      private int endRange;
      public int leftCount;
      public int rightCount;
+     private long startTime,endTime;
 
     public BinaryTree(Node node, int[] oddNumberArray, int startRange, int endRange){
     	this.root = node;
@@ -58,12 +59,17 @@ public class BinaryTree {
 
         }
     }
+    public void searchOdd(){
+    	startTime = System.currentTimeMillis();
+    	preorderTraverseTree2(root);
+        endTime = System.currentTimeMillis();
+    }
     public void preorderTraverseTree2(Node focusNode) {
     		//rightCount++;
         //System.out.println("Entered preorder function");
         if (focusNode != null) {
             if(focusNode.getRightChild()!=null){
-                rightCount++;
+               rightCount++;
             }
             if(focusNode.getLeftChild()!=null){
                 leftCount++;
@@ -74,6 +80,8 @@ public class BinaryTree {
                 oddNumber = focusNode.getData();
 
                 if (oddNumber >= startRange && oddNumber <= endRange) {
+                	
+                	integers++;
 
                     for (int i = 0; i < oddNumberArray.length; i++) {
 
@@ -85,8 +93,12 @@ public class BinaryTree {
                     }
                 }
             }
-            preorderTraverseTree2(focusNode.getLeftChild());
-            preorderTraverseTree2(focusNode.getRightChild());
+            if(integers<oddNumberArray.length){
+            	preorderTraverseTree2(focusNode.getLeftChild());
+            }
+            if(integers<oddNumberArray.length){
+            	preorderTraverseTree2(focusNode.getRightChild());
+            }
         }
     }
     
@@ -114,6 +126,10 @@ public class BinaryTree {
     }  */
     public int[] getOddNumberArray(){
     	return oddNumberArray;
+    }
+    public long getTime(){
+    	//System.out.println(endTime+"   "+startTime);
+    	return (endTime-startTime);
     }
 }
 

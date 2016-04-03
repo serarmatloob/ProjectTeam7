@@ -10,50 +10,28 @@ import java.util.Random;
  */
 public class BinaryTree {
 
-    private Node root;
-    private int leftCount;
-    private int rightCount;
-    private int integers;
+     private Node root;
+     private int integers;
+     private int[] oddNumberArray;
+     private int oddNumber;
+     private int startRange;
+     private int endRange;
+     public int leftCount;
+     public int rightCount;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        BinaryTree theTree = new BinaryTree();
-        Random random = new Random();
-        long startTime;
-        long endTime;
-        int size = 20000;
-        theTree.integers=0;
-        
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            list.add(i);
-        }
-        
-        int[] keys = new int[size];
-        for (int i = 0; i < size; i++) {
-            keys[i] = list.remove((int) (Math.random() * list.size()));
-        }
-        int[] data = new int[size];
-        for (int i = 0; i < data.length; i++) {
-            int number = random.nextInt(1000);
-            data[i] = number;
-        }
-
-        for (int i = 0; i < keys.length; i++) {
-            theTree.addNode(keys[i], data[i]);
-        }
-
-        startTime = System.currentTimeMillis();
-        theTree.preorderTraverseTree(theTree.root);
-        endTime = System.currentTimeMillis();
-        System.out.println("Time took: " + (endTime - startTime));
-        System.out.println("right childs: " + theTree.rightCount);
-        System.out.println("left childs: " + theTree.leftCount);
+    public BinaryTree(Node node, int[] oddNumberArray, int startRange, int endRange){
+    	this.root = node;
+    	this.oddNumberArray=oddNumberArray;
+    	this.startRange=startRange;
+    	this.endRange=endRange;
+    }
+    public BinaryTree(){
+    }
+    public Node getRoot(){
+    	return root;
     }
 
-    private void addNode(int key, int data) {
+    public void addNode(int key, int data) {
         Node newNode = new Node(key, data);
         if (root == null) {
             root = newNode;
@@ -80,20 +58,59 @@ public class BinaryTree {
 
         }
     }
+    public void preorderTraverseTree2(Node focusNode) {
+    		//rightCount++;
+        //System.out.println("Entered preorder function");
+        if (focusNode != null) {
+            if(focusNode.getRightChild()!=null){
+               rightCount++;
+               //integers++;
+            }
+            if(focusNode.getLeftChild()!=null){
+                leftCount++;
+                //integers++;
+            }
 
-private void preorderTraverseTree(Node focusNode) {
-         
+            if (focusNode.getData() % 2 == 1) {
+
+                oddNumber = focusNode.getData();
+
+                if (oddNumber >= startRange && oddNumber <= endRange) {
+                	
+                	integers++;
+
+                    for (int i = 0; i < oddNumberArray.length; i++) {
+
+                        if (oddNumberArray[i] == 0) {
+
+                            oddNumberArray[i] = oddNumber;
+                            break;
+                        }
+                    }
+                }
+            }
+            if(integers<oddNumberArray.length){
+            	preorderTraverseTree2(focusNode.getLeftChild());
+            }
+            if(integers<oddNumberArray.length){
+            	preorderTraverseTree2(focusNode.getRightChild());
+            }
+        }
+    }
+    
+ /* public void preorderTraverseTree(Node focusNode) {
+         rightCount++;
         //System.out.println("Entered preorder function");
         if (focusNode != null) {
             if (focusNode.getRightChild() != null && integers<2) {
-                rightCount++;
+                //rightCount++;
                  if(focusNode.getRightChild().getData() % 2 != 0) {
                     System.out.println(focusNode.getRightChild());
                     integers++;
                 }
             }
             if (focusNode.getLeftChild() != null && integers<2) {
-                leftCount++;
+                //leftCount++;
                 if (focusNode.getLeftChild().getData() % 2 != 0) {
                     System.out.println(focusNode.getLeftChild());
                     integers++;
@@ -102,6 +119,9 @@ private void preorderTraverseTree(Node focusNode) {
             preorderTraverseTree(focusNode.getLeftChild());
             preorderTraverseTree(focusNode.getRightChild());
         }
+    }  */
+    public int[] getOddNumberArray(){
+    	return oddNumberArray;
     }
 }
 
