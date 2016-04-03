@@ -7,10 +7,7 @@ import java.lang.*;
 public class BinaryTreeTest extends TestCase {
 
 
-	private int arraySize = 20;
-	private int numberOfReturns = 2;
-	private int startRangeToBeFound = 900;
-	private int endRangeToBeFound = 9000;
+	private int arraySize = 2000000;
 	private int[] keyArray;
 	private int[] dataArray;
 	private BinaryTree binaryTree;
@@ -26,8 +23,9 @@ public class BinaryTreeTest extends TestCase {
 		for (int i = 0; i < arraySize; i++) {
 
 			// Min + (int)(Math.random() * ((Max - Min) + 1))
+			// Try increasing the maximum random value if you want to make this program more complex.
 			keyArray[i] = arraySize + (int)(Math.random() * (((arraySize * 2) + arraySize) + 1));
-			dataArray[i] = dataArray[i] = 20 + (int)(Math.random() * ((20000 - 20) + 1));
+			dataArray[i] = dataArray[i] = 20 + (int)(Math.random() * ((2000000 - 20) + 1));
 		}
 
 		System.out.println();
@@ -43,17 +41,10 @@ public class BinaryTreeTest extends TestCase {
 
 
 		binaryTree = new BinaryTree(keyArray, dataArray);
-
-		// Change BinaryTree specifics here, but you dont have to. 
-		// There are defaults set in the Binary class, so these 2 methods can be commented out.
-		binaryTree.setNumberOfOddReturns(numberOfReturns);
-		binaryTree.setRangeToBeFound(startRangeToBeFound, endRangeToBeFound);
 	}
 
 
 	public void testBinaryTree() {
-
-		// Uncomment whichever section you want to use for test
 
 		int[] oddNumberArray = binaryTree.getValue();
 		System.out.println("The elapsed time is: " + binaryTree.getTime());

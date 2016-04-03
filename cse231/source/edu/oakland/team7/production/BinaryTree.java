@@ -172,21 +172,8 @@ public class BinaryTree {
 	public void traverseTree() {
 
 		startTime = System.currentTimeMillis();
-		inOrderTraverseTree(root);
-		// preOrderTraverseTree(root);
+		// inOrderTraverseTree(root);
+		preOrderTraverseTree(root);
 		endTime = System.currentTimeMillis();
-	}
-
-
-	public void setRangeToBeFound(int startRange, int endRange) {
-
-		this.startRange = startRange;
-		this.endRange = endRange;
-	}
-
-
-	public void setNumberOfOddReturns(int numOfReturns) {
-
-		this.oddNumberArraySize = numOfReturns;
 	}
 }
