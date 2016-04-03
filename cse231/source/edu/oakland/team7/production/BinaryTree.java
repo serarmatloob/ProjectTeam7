@@ -1,30 +1,33 @@
 package edu.oakland.team7.production;
 import edu.oakland.team7.helper.*;
 import java.lang.*;
+import java.util.*;
 
 
 public class BinaryTree {
 
+
 	private int[] keyArray, dataArray;
 	private int[] oddNumberArray;
-	private int oddNumberArraySize = 2; // size represents how many odd numbers to find
+	private int oddNumberToReturn = 2; // size represents how many odd numbers to find
 	private int startRange = 900; // start of range for the value an odd number must have
-	private int endRange = 905; // end of range for the value an odd number must have
+	private int endRange = 9000; // end of range for the value an odd number must have
 	private int oddNumber;
 	private Node root;
-	private long startTime;
-	private long endTime;
+	private long startTimeNano;
+	private long endTimeNano;
+
 
 	public BinaryTree(int[] keyArray, int[] dataArray) {
 
 		this.keyArray = keyArray;
 		this.dataArray = dataArray;
 
-		oddNumberArray = new int[oddNumberArraySize];
+		oddNumberArray = new int[oddNumberToReturn];
 
 		buildBinaryTree();
-		traverseTree();
 	}
+
 
 	public void buildBinaryTree() {
 
@@ -33,6 +36,7 @@ public class BinaryTree {
 			addNode(keyArray[i], dataArray[i]);
 		}
 	}
+
 
 	public void addNode(int key, int data) {
 
@@ -78,9 +82,10 @@ public class BinaryTree {
 		}
 	}
 
+
 	public void preOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
+		if (focusNode != null && oddNumberArray[oddNumberToReturn -1] == 0) {
 
 			if (focusNode.getData() % 2 == 1) {
 
@@ -99,23 +104,24 @@ public class BinaryTree {
 				}
 			}
 
-			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
 
 				preOrderTraverseTree(focusNode.getLeftChild());
 			}
 
-			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
 				
 				preOrderTraverseTree(focusNode.getRightChild());
 			}
 		}
 	}
 
+
 	public void inOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
+		if (focusNode != null && oddNumberArray[oddNumberToReturn -1] == 0) {
 
-			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
 
 				inOrderTraverseTree(focusNode.getLeftChild());
 			}
@@ -137,23 +143,24 @@ public class BinaryTree {
 				}
 			}
 
-			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
 
 				inOrderTraverseTree(focusNode.getRightChild());
 			}
 		}
 	}
 
+
 	public void postOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
+		if (focusNode != null && oddNumberArray[oddNumberToReturn -1] == 0) {
 
-			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
 
 				postOrderTraverseTree(focusNode.getLeftChild());
 			}
 
-			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
 
 				postOrderTraverseTree(focusNode.getRightChild());
 			}
@@ -177,35 +184,55 @@ public class BinaryTree {
 		}
 	}
 
+
 	public int[] getValue() {
 
 		return oddNumberArray;
 	}
+
 
 	public Node getRoot() {
 
 		return root;
 	}
 
+
 	public long getTime() {
 
-		return (endTime - startTime);
+		return (endTimeNano - startTimeNano);
 	}
 
-	public void traverseTree() {
 
-		System.out.println("This is using IN-order traversal to find the odd numbers.");
-		System.out.println();
-		System.out.println("The size of random array is: 10,000,000");
-		System.out.println("The range of possible random numbers generated in array is: 20 to 4,000,000");
-		System.out.println("The range of numbers that we are looking for that contain odd ints is: 900 to 905");
-		System.out.println();
+	public void findOdd() {
+
+		startTimeNano = System.nanoTime();
+
+		preOrderTraverseTree(root);
+
+		endTimeNano = System.nanoTime();
+	}
 
 
-		startTime = System.currentTimeMillis();
+	public void findOddInOrder() {
+
+		Arrays.fill(oddNumberArray, 0);
+
+		startTimeNano = System.nanoTime();
+
 		inOrderTraverseTree(root);
-		// postOrderTraverseTree(root);
-		// preOrderTraverseTree(root);
-		endTime = System.currentTimeMillis();
+
+		endTimeNano = System.nanoTime();
+	}
+
+
+	public void findOddPostOrder() {
+
+		Arrays.fill(oddNumberArray, 0);
+
+		startTimeNano = System.nanoTime();
+
+		postOrderTraverseTree(root);
+
+		endTimeNano = System.nanoTime();
 	}
 }

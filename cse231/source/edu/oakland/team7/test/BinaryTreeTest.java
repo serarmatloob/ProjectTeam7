@@ -1,54 +1,51 @@
 package edu.oakland.team7.test;
 import edu.oakland.team7.production.*;
+import edu.oakland.team7.helper.*;
 import junit.framework.*;
 import java.lang.*;
+import java.util.*;
 
 public class BinaryTreeTest extends TestCase {
 
-	private int arraySize = 10000000;
-	private int[] keyArray;
-	private int[] dataArray;
+
+	int arraySize = 20;
+	private ArrayGen arrayGen;
 	private BinaryTree binaryTree;
 	private boolean isOddInRange;
+	private int[] oddNumberArray;
+
 
 	public void setUp() {
 
-		// Build random array for testing
-		keyArray = new int[arraySize];
-		dataArray = new int[arraySize];
-
-		for (int i = 0; i < arraySize; i++) {
-
-			// Min + (int)(Math.random() * ((Max - Min) + 1))
-			// Try increasing the maximum random value if you want to make this program more complex.
-			keyArray[i] = arraySize + (int)(Math.random() * (((arraySize * 2) + arraySize) + 1));
-			dataArray[i] = dataArray[i] = 20 + (int)(Math.random() * ((4000000 - 20) + 1));
-		}
-
-		System.out.println();
-
-		/*
-		// Print out current array of keys and data
-		for (int i = 0; i < arraySize; i++) {
-
-			System.out.println(dataArray[i] + " has the key: " + keyArray[i]);
-		}
-
-		System.out.println();
-		*/
-
-
-		binaryTree = new BinaryTree(keyArray, dataArray);
+		arrayGen = new ArrayGen(arraySize);
+		arrayGen.createNodeKeys();
+		arrayGen.createRandomDataArray(); // this will pass as long as odd numbers are within range
+		// arrayGen.createEvenDataArray(); // this will fail the test
+		// arrayGen.createOddDataArray(); // this will pass as long as odd numbers are within range
+		// arrayGen.createEqualArray(); // this will pass as long as odd numbers are within range and contains equal of odd and even numbers
+		binaryTree = new BinaryTree(arrayGen.getKeyArray(), arrayGen.getDataArray());
 	}
 
+
 	public void testBinaryTree() {
-
-		int[] oddNumberArray = binaryTree.getValue();
-		System.out.println("The elapsed time is: " + binaryTree.getTime());
-
-		// Print out oddNumberArray
+		
+		// Print out the array
 		System.out.println();
-		System.out.print("The odd numbers are: ");
+		for (int i = 0; i < arraySize; i++) {
+
+			System.out.println(arrayGen.getDataArray()[i] + " has the key: " + arrayGen.getKeyArray()[i]);
+		}
+
+		// Print out array size
+		System.out.println();
+		System.out.println("The size of the array is: " + arraySize);
+
+		binaryTree.findOdd();
+		oddNumberArray = binaryTree.getValue();
+
+		// Print out the odd numbers found
+		System.out.println();
+		System.out.print("The odd numbers found using pre order traverse are: ");
 
 		for (int num : oddNumberArray) {
 
@@ -56,6 +53,49 @@ public class BinaryTreeTest extends TestCase {
 		}
 
 		System.out.println("|");
+		System.out.println();
+
+		System.out.println("The elapsed time using pre order traverse is: " + binaryTree.getTime() + " nanoseconds.");
+		System.out.println();
+
+		System.out.println("------------------------------------------------");
+
+		binaryTree.findOddInOrder();
+		oddNumberArray = binaryTree.getValue();
+
+		// Print out the odd numbers found
+		System.out.println();
+		System.out.print("The odd numbers found using in order traverse are: ");
+
+		for (int num : oddNumberArray) {
+
+			System.out.format("| %d ", num);
+		}
+
+		System.out.println("|");
+		System.out.println();
+
+		System.out.println("The elapsed time using in order traverse is: " + binaryTree.getTime() + " nanoseconds.");
+		System.out.println();
+
+		System.out.println("------------------------------------------------");
+
+		binaryTree.findOddPostOrder();
+		oddNumberArray = binaryTree.getValue();
+
+		// Print out the odd numbers found
+		System.out.println();
+		System.out.print("The odd numbers found using post order traverse are: ");
+
+		for (int num : oddNumberArray) {
+
+			System.out.format("| %d ", num);
+		}
+
+		System.out.println("|");
+		System.out.println();
+
+		System.out.println("The elapsed time using post order traverse is: " + binaryTree.getTime() + " nanoseconds.");
 		System.out.println();
 
 		// finding out if oddNumberArray contains odd ints within given range
