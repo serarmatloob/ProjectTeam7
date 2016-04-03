@@ -18,7 +18,7 @@ public class BinaryTree {
      private int endRange;
      public int leftCount;
      public int rightCount;
-     private long startTime,endTime;
+     private double startTime,endTime;
 
     public BinaryTree(Node node, int[] oddNumberArray, int startRange, int endRange){
     	this.root = node;
@@ -60,9 +60,11 @@ public class BinaryTree {
         }
     }
     public void searchOdd(){
-    	startTime = System.currentTimeMillis();
+    	startTime = System.nanoTime();
+    	//startTime = System.currentTimeMillis();
     	preorderTraverseTree2(root);
-        endTime = System.currentTimeMillis();
+        //endTime = System.currentTimeMillis();
+        endTime = System.nanoTime();
     }
     public void preorderTraverseTree2(Node focusNode) {
     		//rightCount++;
@@ -127,7 +129,7 @@ public class BinaryTree {
     public int[] getOddNumberArray(){
     	return oddNumberArray;
     }
-    public long getTime(){
+    public double getTime(){
     	//System.out.println(endTime+"   "+startTime);
     	return (endTime-startTime);
     }
