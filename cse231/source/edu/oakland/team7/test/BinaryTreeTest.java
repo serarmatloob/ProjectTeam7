@@ -3,16 +3,13 @@ import edu.oakland.team7.production.*;
 import junit.framework.*;
 import java.lang.*;
 
-
 public class BinaryTreeTest extends TestCase {
-
 
 	private int arraySize = 20;
 	private int[] keyArray;
 	private int[] dataArray;
 	private BinaryTree binaryTree;
 	private boolean isOddInRange;
-
 
 	public void setUp() {
 
@@ -43,12 +40,10 @@ public class BinaryTreeTest extends TestCase {
 		binaryTree = new BinaryTree(keyArray, dataArray);
 	}
 
-
 	public void testBinaryTree() {
 
 		int[] oddNumberArray = binaryTree.getValue();
 		System.out.println("The elapsed time is: " + binaryTree.getTime());
-
 
 		// Print out oddNumberArray
 		System.out.println();
@@ -61,7 +56,6 @@ public class BinaryTreeTest extends TestCase {
 
 		System.out.println("|");
 		System.out.println();
-
 
 		// finding out if oddNumberArray contains odd ints within given range
 		for (int num : oddNumberArray) {

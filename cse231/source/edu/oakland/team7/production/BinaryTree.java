@@ -5,7 +5,6 @@ import java.lang.*;
 
 public class BinaryTree {
 
-
 	private int[] keyArray, dataArray;
 	private int[] oddNumberArray;
 	private int oddNumberArraySize = 2; // size represents how many odd numbers to find
@@ -15,7 +14,6 @@ public class BinaryTree {
 	private Node root;
 	private long startTime;
 	private long endTime;
-
 
 	public BinaryTree(int[] keyArray, int[] dataArray) {
 
@@ -28,7 +26,6 @@ public class BinaryTree {
 		traverseTree();
 	}
 
-
 	public void buildBinaryTree() {
 
 		for (int i = 0; i < keyArray.length; i++) {
@@ -36,7 +33,6 @@ public class BinaryTree {
 			addNode(keyArray[i], dataArray[i]);
 		}
 	}
-
 
 	public void addNode(int key, int data) {
 
@@ -82,7 +78,6 @@ public class BinaryTree {
 		}
 	}
 
-
 	public void preOrderTraverseTree(Node focusNode) {
 
 		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
@@ -98,6 +93,7 @@ public class BinaryTree {
 						if (oddNumberArray[i] == 0) {
 
 							oddNumberArray[i] = oddNumber;
+							System.out.println("just added a number");
 							break;
 						}
 					}
@@ -115,7 +111,6 @@ public class BinaryTree {
 			}
 		}
 	}
-
 
 	public void inOrderTraverseTree(Node focusNode) {
 
@@ -137,6 +132,7 @@ public class BinaryTree {
 						if (oddNumberArray[i] == 0) {
 
 							oddNumberArray[i] = oddNumber;
+							System.out.println("just added a number");
 							break;
 						}
 					}
@@ -150,29 +146,60 @@ public class BinaryTree {
 		}
 	}
 
+	public void postOrderTraverseTree(Node focusNode) {
+
+		if (focusNode != null && oddNumberArray[oddNumberArraySize -1] == 0) {
+
+			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+
+				postOrderTraverseTree(focusNode.getLeftChild());
+			}
+
+			if (oddNumberArray[oddNumberArraySize - 1] == 0) {
+
+				postOrderTraverseTree(focusNode.getRightChild());
+			}
+
+			if (focusNode.getData() % 2 == 1) {
+
+				oddNumber = focusNode.getData();
+
+				if (oddNumber >= startRange && oddNumber <= endRange) {
+
+					for (int i = 0; i < oddNumberArray.length; i++) {
+
+						if (oddNumberArray[i] == 0) {
+
+							oddNumberArray[i] = oddNumber;
+							System.out.println("just added a number");
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
 
 	public int[] getValue() {
 
 		return oddNumberArray;
 	}
 
-
 	public Node getRoot() {
 
 		return root;
 	}
-
 
 	public long getTime() {
 
 		return (endTime - startTime);
 	}
 
-
 	public void traverseTree() {
 
 		startTime = System.currentTimeMillis();
 		// inOrderTraverseTree(root);
+		// postOrderTraverseTree(root);
 		preOrderTraverseTree(root);
 		endTime = System.currentTimeMillis();
 	}
