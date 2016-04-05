@@ -15,12 +15,14 @@ public class BinaryTree {
      private int startRange = 900; 
      private int endRange = 9000; 
      private long startTime,endTime;
+     private ArrayList<Integer> arrayList;
 
     public BinaryTree(int[] keyArray, int[] dataArray){
     	this.keyArray = keyArray;
 	this.dataArray = dataArray;
 	oddNumberArray = new int[oddNumberToReturn];
 	Arrays.fill(oddNumberArray, -1);
+	this.arrayList = new ArrayList<>();
 	buildBinaryTree();
     }
     public void buildBinaryTree() {
@@ -57,9 +59,9 @@ public class BinaryTree {
         }
     }
     public void searchOdd(){
-    	startTime = System.currentTimeMillis();
+    	startTime = System.nanoTime();
     	preorderTraverseTree(root);
-        endTime = System.currentTimeMillis();
+        endTime = System.nanoTime();
     }
     public void preorderTraverseTree(Node focusNode) {
 
@@ -70,29 +72,33 @@ public class BinaryTree {
                 oddNumber = focusNode.getData();
 
                 if (oddNumber >= startRange && oddNumber <= endRange) {
-                	
                 	integers++;
-
-                    for (int i = 0; i < oddNumberArray.length; i++) {
-
-                        if (oddNumberArray[i] == -1) {
-
-                            oddNumberArray[i] = oddNumber;
-                            break;
-                        }
-                    }
+                	arrayList.add(oddNumber);
                 }
             }
-            if(integers<oddNumberArray.length){
+            if(integers<oddNumberToReturn){
             	preorderTraverseTree(focusNode.getLeftChild());
             }
-            if(integers<oddNumberArray.length){
+            if(integers<oddNumberToReturn){
             	preorderTraverseTree(focusNode.getRightChild());
             }
         }
     }
 
     public int[] getOddNumberArray(){
+    	int index=0;
+    
+    	//for(Integer number: arrayList){
+    	//	oddNumberArray[index++]=number;
+    	//}
+    	
+    	for(int i=0;i<arrayList.size();i++){
+    		if( arrayList.get(i)!=null){
+    			oddNumberArray[i] = arrayList.get(i);
+    		}
+    		
+    	}
+    	
     	return oddNumberArray;
     }
     public long getTime(){
