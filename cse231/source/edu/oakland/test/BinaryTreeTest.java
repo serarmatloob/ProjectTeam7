@@ -20,7 +20,28 @@ public class BinaryTreeTest extends TestCase{
 	
 	public void setUp(){
 		
-		//create set1 arrays of 20 elements (keys and data)
+		ArrayGen array1= new ArrayGen(20000);
+		array1.createNodeKeys();
+		array1.createEqualArray();
+		
+		keys=array1.getKeyArray();
+		data=array1.getDataArray();
+		
+		ArrayGen array2= new ArrayGen(20000);
+		array2.createNodeKeys();
+		array2.createEvenDataArray();
+		
+		keys2=array2.getKeyArray();
+		data2=array2.getDataArray();
+		
+		ArrayGen array3= new ArrayGen(20000);
+		array3.createNodeKeys();
+		array3.createOddDataArray();
+		
+		keys3=array3.getKeyArray();
+		data3=array3.getDataArray();
+		
+		/* //create set1 arrays of 20 elements (keys and data)
         	list = new ArrayList<>();
         	for (int i = 0; i < size; i++) {
         		list.add(i);
@@ -52,7 +73,7 @@ public class BinaryTreeTest extends TestCase{
         	for (int i = 0; i < size3; i++) {
         		keys3[i] = list3.remove((int) (Math.random() * list3.size()));
         		data3[i]=min+(int)(Math.random()*((max-min)+1));
-        	}
+        	} */
 
 	}
 	public void testBinaryTree(){
@@ -61,14 +82,14 @@ public class BinaryTreeTest extends TestCase{
 		
         	binaryTree.searchOdd();
         	
-        	System.out.println("Searching Array 1 Time:  " +  binaryTree.getTime());
+        	System.out.println("\n\nArray 1 Searching  Time:  " +  binaryTree.getTime());
         	
         	int[] oddNumber=binaryTree.getOddNumberArray();
-        	
+        	System.out.print("Odd numbers in (Set1 equal array): ");
 		for(int i=0;i<oddNumber.length;i++){
-        		System.out.println("Odd numbers(Set1): "+oddNumber[i]);
         		assertTrue(oddNumber[i] %2 !=0);
         		assertTrue(oddNumber[i] >=startRange && oddNumber[i] <=endRange);
+        		System.out.print(" [ "+oddNumber[i]+" ] ");
         	}
         
         	
@@ -79,14 +100,15 @@ public class BinaryTreeTest extends TestCase{
 		
 		binaryTree2.searchOdd();
 		
-        	System.out.println("Searching Array 2 Time:  " +  binaryTree2.getTime());
+        	System.out.println("\n\nArray 2 Searching  Time:  " +  binaryTree2.getTime());
         	
         	int[] oddNumber=binaryTree2.getOddNumberArray();
+        	System.out.print("Odd numbers in (Set2 even array): ");
         	
 		for(int i=0;i<oddNumber.length;i++){
-        		System.out.println("Odd numbers(Set2): "+oddNumber[i]);
         		assertTrue(oddNumber[i] %2 !=0);
         		assertTrue(oddNumber[i] >=startRange && oddNumber[i] <=endRange);
+        		System.out.print(" [ "+oddNumber[i]+" ] ");
         	}
 	}
 	public void testBinaryTree3(){
@@ -95,14 +117,14 @@ public class BinaryTreeTest extends TestCase{
 		
 		binaryTree3.searchOdd();
 		
-		System.out.println("Searching Array 3 Time:  " +  binaryTree3.getTime());
+		System.out.println("\n\nArray 3 Searching  Time:  " +  binaryTree3.getTime());
         	
 		int[] oddNumber=binaryTree3.getOddNumberArray();
-		
+		System.out.print("Odd numbers in (Set3 odd array): ");
 		for(int i=0;i<oddNumber.length;i++){
-        		System.out.println("Odd numbers(Set3): "+oddNumber[i]);
         		assertTrue(oddNumber[i] %2 !=0);
         		assertTrue(oddNumber[i] >=startRange && oddNumber[i] <=endRange);
+        		System.out.print(" [ "+oddNumber[i]+" ] ");
         	}
 	}
 }

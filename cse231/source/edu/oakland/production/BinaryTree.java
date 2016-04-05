@@ -71,7 +71,7 @@ public class BinaryTree {
 
             }
 
-            if (focusNode.getData() % 2 == 1) {
+            if (focusNode.getData() % 2 !=0) {
 
                 oddNumber = focusNode.getData();
 
