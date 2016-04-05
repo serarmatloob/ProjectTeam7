@@ -1,9 +1,6 @@
 package edu.oakland.helper;
 
-/**
- *
- * @author Serar
- */
+
 public class Node {
 
     private int key;

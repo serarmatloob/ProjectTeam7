@@ -4,33 +4,30 @@ import edu.oakland.helper.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- *
- * @author Serar
- */
+
 public class BinaryTree {
 
      private Node root;
+     private int[] keyArray, dataArray;
      private int integers;
      private int[] oddNumberArray;
+     private int oddNumberToReturn = 2;
      private int oddNumber;
-     private int startRange;
-     private int endRange;
-     public int leftCount;
-     public int rightCount;
-     private double startTime,endTime;
+     private int startRange = 900; 
+     private int endRange = 9000; 
+     private long startTime,endTime;
 
-    public BinaryTree(Node node, int[] oddNumberArray, int startRange, int endRange){
-    	this.root = node;
-    	this.oddNumberArray=oddNumberArray;
-    	this.startRange=startRange;
-    	this.endRange=endRange;
+    public BinaryTree(int[] keyArray, int[] dataArray){
+    	this.keyArray = keyArray;
+	this.dataArray = dataArray;
+	oddNumberArray = new int[oddNumberToReturn];
+	buildBinaryTree();
     }
-    public BinaryTree(){
-    }
-    public Node getRoot(){
-    	return root;
-    }
+    public void buildBinaryTree() {
+		for (int i = 0; i < keyArray.length; i++) {
+			addNode(keyArray[i], dataArray[i]);
+		}
+	}
 
     public void addNode(int key, int data) {
         Node newNode = new Node(key, data);
@@ -60,21 +57,18 @@ public class BinaryTree {
         }
     }
     public void searchOdd(){
-    	startTime = System.nanoTime();
-    	//startTime = System.currentTimeMillis();
-    	preorderTraverseTree2(root);
-        //endTime = System.currentTimeMillis();
-        endTime = System.nanoTime();
+    	startTime = System.currentTimeMillis();
+    	preorderTraverseTree(root);
+        endTime = System.currentTimeMillis();
     }
-    public void preorderTraverseTree2(Node focusNode) {
-    		//rightCount++;
-        //System.out.println("Entered preorder function");
+    public void preorderTraverseTree(Node focusNode) {
+
         if (focusNode != null) {
             if(focusNode.getRightChild()!=null){
-               rightCount++;
+ 
             }
             if(focusNode.getLeftChild()!=null){
-                leftCount++;
+
             }
 
             if (focusNode.getData() % 2 == 1) {
@@ -96,42 +90,22 @@ public class BinaryTree {
                 }
             }
             if(integers<oddNumberArray.length){
-            	preorderTraverseTree2(focusNode.getLeftChild());
+            	preorderTraverseTree(focusNode.getLeftChild());
             }
             if(integers<oddNumberArray.length){
-            	preorderTraverseTree2(focusNode.getRightChild());
+            	preorderTraverseTree(focusNode.getRightChild());
             }
         }
     }
-    
- /* public void preorderTraverseTree(Node focusNode) {
-         rightCount++;
-        //System.out.println("Entered preorder function");
-        if (focusNode != null) {
-            if (focusNode.getRightChild() != null && integers<2) {
-                //rightCount++;
-                 if(focusNode.getRightChild().getData() % 2 != 0) {
-                    System.out.println(focusNode.getRightChild());
-                    integers++;
-                }
-            }
-            if (focusNode.getLeftChild() != null && integers<2) {
-                //leftCount++;
-                if (focusNode.getLeftChild().getData() % 2 != 0) {
-                    System.out.println(focusNode.getLeftChild());
-                    integers++;
-                }
-            }
-            preorderTraverseTree(focusNode.getLeftChild());
-            preorderTraverseTree(focusNode.getRightChild());
-        }
-    }  */
+
     public int[] getOddNumberArray(){
     	return oddNumberArray;
     }
-    public double getTime(){
-    	//System.out.println(endTime+"   "+startTime);
+    public long getTime(){
     	return (endTime-startTime);
+    }
+    public Node getRoot(){
+    	return root;
     }
 }
 
