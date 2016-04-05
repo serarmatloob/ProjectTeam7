@@ -20,21 +20,21 @@ public class BinaryTreeTest extends TestCase{
 	
 	public void setUp(){
 		
-		ArrayGen array1= new ArrayGen(20000);
+		ArrayGen array1= new ArrayGen(20);
 		array1.createNodeKeys();
 		array1.createEqualArray();
 		
 		keys=array1.getKeyArray();
 		data=array1.getDataArray();
 		
-		ArrayGen array2= new ArrayGen(20000);
+		ArrayGen array2= new ArrayGen(20);
 		array2.createNodeKeys();
 		array2.createEvenDataArray();
 		
 		keys2=array2.getKeyArray();
 		data2=array2.getDataArray();
 		
-		ArrayGen array3= new ArrayGen(20000);
+		ArrayGen array3= new ArrayGen(20);
 		array3.createNodeKeys();
 		array3.createOddDataArray();
 		
@@ -86,10 +86,14 @@ public class BinaryTreeTest extends TestCase{
         	
         	int[] oddNumber=binaryTree.getOddNumberArray();
         	System.out.print("Odd numbers in (Set1 equal array): ");
+        	for(int i = 0;i<oddNumber.length;i++){
+        		System.out.print(" [ "+oddNumber[i]+" ] ");
+        	}
 		for(int i=0;i<oddNumber.length;i++){
+			
         		assertTrue(oddNumber[i] %2 !=0);
         		assertTrue(oddNumber[i] >=startRange && oddNumber[i] <=endRange);
-        		System.out.print(" [ "+oddNumber[i]+" ] ");
+        		
         	}
         
         	
@@ -105,10 +109,14 @@ public class BinaryTreeTest extends TestCase{
         	int[] oddNumber=binaryTree2.getOddNumberArray();
         	System.out.print("Odd numbers in (Set2 even array): ");
         	
+        	for(int i = 0;i<oddNumber.length;i++){
+        		System.out.print(" [ "+oddNumber[i]+" ] ");
+        	}
 		for(int i=0;i<oddNumber.length;i++){
+			
         		assertTrue(oddNumber[i] %2 !=0);
         		assertTrue(oddNumber[i] >=startRange && oddNumber[i] <=endRange);
-        		System.out.print(" [ "+oddNumber[i]+" ] ");
+        		
         	}
 	}
 	public void testBinaryTree3(){
@@ -120,11 +128,13 @@ public class BinaryTreeTest extends TestCase{
 		System.out.println("\n\nArray 3 Searching  Time:  " +  binaryTree3.getTime());
         	
 		int[] oddNumber=binaryTree3.getOddNumberArray();
+		for(int i = 0;i<oddNumber.length;i++){
+        		System.out.print(" [ "+oddNumber[i]+" ] ");
+        	}
 		System.out.print("Odd numbers in (Set3 odd array): ");
 		for(int i=0;i<oddNumber.length;i++){
         		assertTrue(oddNumber[i] %2 !=0);
         		assertTrue(oddNumber[i] >=startRange && oddNumber[i] <=endRange);
-        		System.out.print(" [ "+oddNumber[i]+" ] ");
         	}
 	}
 }

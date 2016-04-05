@@ -1,8 +1,7 @@
 
 package edu.oakland.production;
 import edu.oakland.helper.*;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 
 public class BinaryTree {
@@ -21,6 +20,7 @@ public class BinaryTree {
     	this.keyArray = keyArray;
 	this.dataArray = dataArray;
 	oddNumberArray = new int[oddNumberToReturn];
+	Arrays.fill(oddNumberArray, -1);
 	buildBinaryTree();
     }
     public void buildBinaryTree() {
@@ -64,12 +64,6 @@ public class BinaryTree {
     public void preorderTraverseTree(Node focusNode) {
 
         if (focusNode != null) {
-            if(focusNode.getRightChild()!=null){
- 
-            }
-            if(focusNode.getLeftChild()!=null){
-
-            }
 
             if (focusNode.getData() % 2 !=0) {
 
@@ -81,7 +75,7 @@ public class BinaryTree {
 
                     for (int i = 0; i < oddNumberArray.length; i++) {
 
-                        if (oddNumberArray[i] == 0) {
+                        if (oddNumberArray[i] == -1) {
 
                             oddNumberArray[i] = oddNumber;
                             break;
