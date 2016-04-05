@@ -5,8 +5,8 @@ public class ArrayGen {
 
 
 	private int arraySize;
-	private int maxValue = 20000; // default value
-	private int minValue = 20; // default value 
+	private int maxValue = 50000; // default value
+	private int minValue = 0; // default value 
 	private int[] keyArray;
 	private int[] dataArray;
 	private Random random;

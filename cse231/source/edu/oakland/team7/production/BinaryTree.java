@@ -16,6 +16,7 @@ public class BinaryTree {
 	private Node root;
 	private long startTimeNano;
 	private long endTimeNano;
+	private ArrayList<Integer> arrayList;
 
 
 	public BinaryTree(int[] keyArray, int[] dataArray) {
@@ -24,8 +25,12 @@ public class BinaryTree {
 		this.dataArray = dataArray;
 
 		oddNumberArray = new int[oddNumberToReturn];
+		Arrays.fill(oddNumberArray, -1);
 
+		arrayList = new ArrayList<Integer>(); // initilized its initial cappacity
+		
 		buildBinaryTree();
+
 	}
 
 
@@ -83,67 +88,54 @@ public class BinaryTree {
 	}
 
 
+
 	public void preOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null && oddNumberArray[oddNumberToReturn -1] == 0) {
+		if (focusNode != null && arrayList.size() < oddNumberToReturn) {
 
-			if (focusNode.getData() % 2 == 1) {
+			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) {
 
 				oddNumber = focusNode.getData();
 
 				if (oddNumber >= startRange && oddNumber <= endRange) {
 
-					for (int i = 0; i < oddNumberArray.length; i++) {
-
-						if (oddNumberArray[i] == 0) {
-
-							oddNumberArray[i] = oddNumber;
-							break;
-						}
-					}
+					arrayList.add(oddNumber);
 				}
 			}
 
-			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
+			if (arrayList.size() < oddNumberToReturn) {
 
 				preOrderTraverseTree(focusNode.getLeftChild());
 			}
 
-			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
+			if (arrayList.size() < oddNumberToReturn) {
 				
 				preOrderTraverseTree(focusNode.getRightChild());
 			}
 		}
 	}
 
-
+	
 	public void inOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null && oddNumberArray[oddNumberToReturn -1] == 0) {
+		if (focusNode != null && arrayList.size() < oddNumberToReturn) {
 
-			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
+			if (arrayList.size() < oddNumberToReturn) {
 
 				inOrderTraverseTree(focusNode.getLeftChild());
 			}
 
-			if (focusNode.getData() % 2 == 1) {
+			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) { 
 
 				oddNumber = focusNode.getData();
 
 				if (oddNumber >= startRange && oddNumber <= endRange) {
 
-					for (int i = 0; i < oddNumberArray.length; i++) {
-
-						if (oddNumberArray[i] == 0) {
-
-							oddNumberArray[i] = oddNumber;
-							break;
-						}
-					}
+					arrayList.add(oddNumber);
 				}
 			}
 
-			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
+			if (arrayList.size() < oddNumberToReturn) {
 
 				inOrderTraverseTree(focusNode.getRightChild());
 			}
@@ -153,39 +145,40 @@ public class BinaryTree {
 
 	public void postOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null && oddNumberArray[oddNumberToReturn -1] == 0) {
+		if (focusNode != null && arrayList.size() < oddNumberToReturn) {
 
-			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
+			if (arrayList.size() < oddNumberToReturn) {
 
 				postOrderTraverseTree(focusNode.getLeftChild());
 			}
 
-			if (oddNumberArray[oddNumberToReturn - 1] == 0) {
+			if (arrayList.size() < oddNumberToReturn) {
 
 				postOrderTraverseTree(focusNode.getRightChild());
 			}
 
-			if (focusNode.getData() % 2 == 1) {
+			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) {
 
 				oddNumber = focusNode.getData();
 
 				if (oddNumber >= startRange && oddNumber <= endRange) {
 
-					for (int i = 0; i < oddNumberArray.length; i++) {
-
-						if (oddNumberArray[i] == 0) {
-
-							oddNumberArray[i] = oddNumber;
-							break;
-						}
-					}
+					arrayList.add(oddNumber);
 				}
 			}
 		}
 	}
+	
 
 
 	public int[] getValue() {
+
+		int index = 0;
+
+		for (Integer number : arrayList) {
+
+			oddNumberArray[index++] = number;
+		}
 
 		return oddNumberArray;
 	}
@@ -212,10 +205,8 @@ public class BinaryTree {
 		endTimeNano = System.nanoTime();
 	}
 
-
+	
 	public void findOddInOrder() {
-
-		Arrays.fill(oddNumberArray, 0);
 
 		startTimeNano = System.nanoTime();
 
@@ -227,12 +218,11 @@ public class BinaryTree {
 
 	public void findOddPostOrder() {
 
-		Arrays.fill(oddNumberArray, 0);
-
 		startTimeNano = System.nanoTime();
 
 		postOrderTraverseTree(root);
 
 		endTimeNano = System.nanoTime();
 	}
+	
 }
