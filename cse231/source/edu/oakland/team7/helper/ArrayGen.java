@@ -100,29 +100,6 @@ public class ArrayGen {
     }
 
 
-    public void createEqualArray() {
-
-    	Integer next;
-		Set<Integer> generated = new LinkedHashSet<Integer>();
-		this.dataArray = new int[arraySize];
-		int index = 0;
-
-		while (generated.size() < arraySize) {
-
-			next = random.nextInt(maxValue) + minValue;
-			
-			generated.add(next);
-			generated.add(next + 1);
-
-		}
-
-		for (Integer data : generated) {
-
-			dataArray[index++] = data;
-		}
-    }
-
-
     public int[] getKeyArray() {
 
     	return keyArray;

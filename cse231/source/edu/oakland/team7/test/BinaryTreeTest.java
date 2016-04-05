@@ -22,7 +22,6 @@ public class BinaryTreeTest extends TestCase {
 		arrayGen.createRandomDataArray(); // this will pass as long as odd numbers are within range
 		// arrayGen.createEvenDataArray(); // this will fail the test
 		// arrayGen.createOddDataArray(); // this will pass as long as odd numbers are within range
-		// arrayGen.createEqualArray(); // this will pass as long as odd numbers are within range and contains equal of odd and even numbers
 		binaryTree = new BinaryTree(arrayGen.getKeyArray(), arrayGen.getDataArray());
 	}
 
@@ -58,45 +57,6 @@ public class BinaryTreeTest extends TestCase {
 		System.out.println("The elapsed time using pre order traverse is: " + binaryTree.getTime() + " nanoseconds.");
 		System.out.println();
 
-		System.out.println("------------------------------------------------");
-
-		binaryTree.findOddInOrder();
-		oddNumberArray = binaryTree.getValue();
-
-		// Print out the odd numbers found
-		System.out.println();
-		System.out.print("The odd numbers found using in order traverse are: ");
-
-		for (int num : oddNumberArray) {
-
-			System.out.format("| %d ", num);
-		}
-
-		System.out.println("|");
-		System.out.println();
-
-		System.out.println("The elapsed time using in order traverse is: " + binaryTree.getTime() + " nanoseconds.");
-		System.out.println();
-
-		System.out.println("------------------------------------------------");
-
-		binaryTree.findOddPostOrder();
-		oddNumberArray = binaryTree.getValue();
-
-		// Print out the odd numbers found
-		System.out.println();
-		System.out.print("The odd numbers found using post order traverse are: ");
-
-		for (int num : oddNumberArray) {
-
-			System.out.format("| %d ", num);
-		}
-
-		System.out.println("|");
-		System.out.println();
-
-		System.out.println("The elapsed time using post order traverse is: " + binaryTree.getTime() + " nanoseconds.");
-		System.out.println();
 
 		// finding out if oddNumberArray contains odd ints within given range
 		for (int num : oddNumberArray) {
