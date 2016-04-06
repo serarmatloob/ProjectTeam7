@@ -208,6 +208,9 @@ public class BinaryTree {
 	
 	public void findOddInOrder() {
 
+		Arrays.fill(oddNumberArray, -1);
+		arrayList.clear();
+
 		startTimeNano = System.nanoTime();
 
 		inOrderTraverseTree(root);
@@ -217,6 +220,9 @@ public class BinaryTree {
 
 
 	public void findOddPostOrder() {
+
+		Arrays.fill(oddNumberArray, -1);
+		arrayList.clear();
 
 		startTimeNano = System.nanoTime();
 

@@ -5,8 +5,8 @@ public class ArrayGen {
 
 
 	private int arraySize;
-	private int maxValue = 50000; // default value
-	private int minValue = 0; // default value 
+	private int maxValue = 20000; // default value
+	private int minValue = 20; // default value 
 	private int[] keyArray;
 	private int[] dataArray;
 	private Random random;
@@ -16,6 +16,8 @@ public class ArrayGen {
 
 		this.arraySize = arraySize;
 		this.random = new Random();
+
+		createNodeKeys();
 	}
 
 
@@ -29,7 +31,7 @@ public class ArrayGen {
 		while (generated.size() < arraySize) {
 
 			next = random.nextInt(arraySize);
-			// As we're adding to a set, this will automatically do a containment check
+			// As we're adding to a set, this will automatically do a containment check to prevent duplicates
 			generated.add(next);
 		}
 
@@ -38,6 +40,7 @@ public class ArrayGen {
 			keyArray[index++] = key;
 		}
 	}
+
 
 
 	public void createRandomDataArray() {
@@ -54,49 +57,47 @@ public class ArrayGen {
 
     public void createEvenDataArray() {
 
-    	Integer next;
-		Set<Integer> generated = new LinkedHashSet<Integer>();
 		this.dataArray = new int[arraySize];
-		int index = 0;
+		int number;
 
-		while (generated.size() < arraySize) {
+		for (int i = 0; i < arraySize; i++) {
 
-			next = random.nextInt(maxValue) + minValue;
-			
-			if (next % 2 == 0) {
+			number = random.nextInt(maxValue) + minValue;
 
-				generated.add(next);
+			if (number % 2 == 0) {
+
+				this.dataArray[i] = number;
+			}
+
+			else {
+
+				this.dataArray[i] = number + 1;
 			}
 		}
 
-		for (Integer data : generated) {
-
-			dataArray[index++] = data;
-		}
     }
 
 
     public void createOddDataArray() {
 
-    	Integer next;
-		Set<Integer> generated = new LinkedHashSet<Integer>();
 		this.dataArray = new int[arraySize];
-		int index = 0;
+		int number;
 
-		while (generated.size() < arraySize) {
+		for (int i = 0; i < arraySize; i++) {
 
-			next = random.nextInt(maxValue) + minValue;
-			
-			if (next % 2 == 1) {
+			number = random.nextInt(maxValue) + minValue;
 
-				generated.add(next);
+			if (number % 2 == 1) {
+
+				this.dataArray[i] = number;
+			}
+
+			else {
+
+				this.dataArray[i] = number + 1;
 			}
 		}
 
-		for (Integer data : generated) {
-
-			dataArray[index++] = data;
-		}
     }
 
 

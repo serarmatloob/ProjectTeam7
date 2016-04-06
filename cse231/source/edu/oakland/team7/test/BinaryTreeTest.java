@@ -18,7 +18,6 @@ public class BinaryTreeTest extends TestCase {
 	public void setUp() {
 
 		arrayGen = new ArrayGen(arraySize);
-		arrayGen.createNodeKeys();
 		arrayGen.createRandomDataArray(); // this will pass as long as odd numbers are within range
 		// arrayGen.createEvenDataArray(); // this will fail the test
 		// arrayGen.createOddDataArray(); // this will pass as long as odd numbers are within range
@@ -28,23 +27,30 @@ public class BinaryTreeTest extends TestCase {
 
 	public void testBinaryTree() {
 		
+		
 		// Print out the array
 		System.out.println();
 		for (int i = 0; i < arraySize; i++) {
 
 			System.out.println(arrayGen.getDataArray()[i] + " has the key: " + arrayGen.getKeyArray()[i]);
 		}
+		
+		
 
 		// Print out array size
 		System.out.println();
 		System.out.println("The size of the array is: " + arraySize);
+		System.out.println();
 
+		System.out.println("--------------------------------------------------------");
+
+		// Using preorder Traversal
 		binaryTree.findOdd();
 		oddNumberArray = binaryTree.getValue();
 
 		// Print out the odd numbers found
 		System.out.println();
-		System.out.print("The odd numbers found using pre order traverse are: ");
+		System.out.print("The odd numbers found using PRE ORDER TRAVERSE are: ");
 
 		for (int num : oddNumberArray) {
 
@@ -54,8 +60,10 @@ public class BinaryTreeTest extends TestCase {
 		System.out.println("|");
 		System.out.println();
 
-		System.out.println("The elapsed time using pre order traverse is: " + binaryTree.getTime() + " nanoseconds.");
+		System.out.println("The elapsed time using PRE ORDER TRAVERSE is: " + binaryTree.getTime() + " nanoseconds.");
 		System.out.println();
+
+		System.out.println("--------------------------------------------------------");
 
 
 		// finding out if oddNumberArray contains odd ints within given range
