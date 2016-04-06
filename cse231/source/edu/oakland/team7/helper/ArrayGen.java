@@ -52,10 +52,10 @@ public class ArrayGen {
 			this.dataArray[i] = random.nextInt(maxValue) + minValue;
 		}
 
-    }
+	}
 
 
-    public void createEvenDataArray() {
+	public void createEvenDataArray() {
 
 		this.dataArray = new int[arraySize];
 		int number;
@@ -75,10 +75,10 @@ public class ArrayGen {
 			}
 		}
 
-    }
+	}
 
 
-    public void createOddDataArray() {
+	public void createOddDataArray() {
 
 		this.dataArray = new int[arraySize];
 		int number;
@@ -98,30 +98,30 @@ public class ArrayGen {
 			}
 		}
 
-    }
+	}
 
 
-    public int[] getKeyArray() {
+	public int[] getKeyArray() {
 
-    	return keyArray;
-    }
-
-
-    public int[] getDataArray() {
-
-    	return dataArray;
-    }
+		return keyArray;
+	}
 
 
-    public void setMinValue(int minimum) {
+	public int[] getDataArray() {
 
-    	this.minValue = minimum;
-    }
+		return dataArray;
+	}
 
 
-    public void setMaxValue(int maximum) {
+	public void setMinValue(int minimum) {
 
-    	this.maxValue = maximum;
-    }
+		this.minValue = minimum;
+	}
+
+
+	public void setMaxValue(int maximum) {
+
+		this.maxValue = maximum;
+	}
 }
 
