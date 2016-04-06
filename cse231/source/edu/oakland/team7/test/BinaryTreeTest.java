@@ -8,7 +8,7 @@ import java.util.*;
 public class BinaryTreeTest extends TestCase {
 
 
-	int arraySize = 20;
+	int arraySize = 20000;
 	private ArrayGen arrayGen;
 	private BinaryTree binaryTree;
 	private boolean isOddInRange;

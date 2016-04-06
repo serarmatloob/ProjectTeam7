@@ -91,9 +91,9 @@ public class BinaryTree {
 
 	public void preOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null && arrayList.size() < oddNumberToReturn) {
+		if (focusNode != null) {
 
-			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) {
+			if (focusNode.getData() % 2 == 1) {
 
 				oddNumber = focusNode.getData();
 
@@ -122,7 +122,7 @@ public class BinaryTree {
 
 			if (arrayList.size() < oddNumberToReturn) {
 
-				preOrderTraverseTree(focusNode.getLeftChild());
+				inOrderTraverseTree(focusNode.getLeftChild());
 			}
 
 			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) { 
@@ -137,7 +137,7 @@ public class BinaryTree {
 
 			if (arrayList.size() < oddNumberToReturn) {
 
-				preOrderTraverseTree(focusNode.getRightChild());
+				inOrderTraverseTree(focusNode.getRightChild());
 			}
 		}
 	}
@@ -149,12 +149,12 @@ public class BinaryTree {
 
 			if (arrayList.size() < oddNumberToReturn) {
 
-				preOrderTraverseTree(focusNode.getLeftChild());
+				postOrderTraverseTree(focusNode.getLeftChild());
 			}
 
 			if (arrayList.size() < oddNumberToReturn) {
 
-				preOrderTraverseTree(focusNode.getRightChild());
+				postOrderTraverseTree(focusNode.getRightChild());
 			}
 
 			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) {
