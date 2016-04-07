@@ -28,9 +28,6 @@ public class BinaryTree {
 		Arrays.fill(oddNumberArray, -1);
 
 		arrayList = new ArrayList<Integer>(); 
-		
-		buildBinaryTree();
-
 	}
 
 
@@ -103,15 +100,9 @@ public class BinaryTree {
 				}
 			}
 
-			if (arrayList.size() < oddNumberToReturn) {
+			preOrderTraverseTree(focusNode.getLeftChild());
 
-				preOrderTraverseTree(focusNode.getLeftChild());
-			}
-
-			if (arrayList.size() < oddNumberToReturn) {
-				
-				preOrderTraverseTree(focusNode.getRightChild());
-			}
+			preOrderTraverseTree(focusNode.getRightChild());
 		}
 	}
 
@@ -129,11 +120,10 @@ public class BinaryTree {
 				if (oddNumber >= startRange && oddNumber <= endRange) {
 
 					arrayList.add(oddNumber);
-					System.out.println("Adding " + oddNumber + " to arrayList");
 				}
 			}
 
-			inOrderTraverseTree(focusNode.getLeftChild());
+			inOrderTraverseTree(focusNode.getRightChild());
 		}
 	}
 
@@ -144,7 +134,7 @@ public class BinaryTree {
 
 			postOrderTraverseTree(focusNode.getLeftChild());
 
-			postOrderTraverseTree(focusNode.getLeftChild());
+			postOrderTraverseTree(focusNode.getRightChild());
 
 			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) {
 
@@ -153,7 +143,6 @@ public class BinaryTree {
 				if (oddNumber >= startRange && oddNumber <= endRange) {
 
 					arrayList.add(oddNumber);
-					System.out.println("Adding " + oddNumber + " to arrayList");
 				}
 			}
 		}
@@ -219,7 +208,5 @@ public class BinaryTree {
 		postOrderTraverseTree(root);
 
 		endTimeNano = System.nanoTime();
-
 	}
-	
 }

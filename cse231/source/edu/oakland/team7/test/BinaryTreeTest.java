@@ -18,10 +18,12 @@ public class BinaryTreeTest extends TestCase {
 	public void setUp() {
 
 		arrayGen = new ArrayGen(arraySize);
+		arrayGen.createNodeKeys();
 		arrayGen.createRandomDataArray(); // this will pass as long as odd numbers are within range
 		// arrayGen.createEvenDataArray(); // this will fail the test
 		// arrayGen.createOddDataArray(); // this will pass as long as odd numbers are within range
 		binaryTree = new BinaryTree(arrayGen.getKeyArray(), arrayGen.getDataArray());
+		binaryTree.buildBinaryTree();
 	}
 
 
@@ -50,7 +52,7 @@ public class BinaryTreeTest extends TestCase {
 
 		// Print out the odd numbers found
 		System.out.println();
-		System.out.print("The odd numbers found using In ORDER TRAVERSE are: ");
+		System.out.print("The odd numbers found using IN ORDER TRAVERSE are: ");
 
 		for (int num : oddNumberArray) {
 
@@ -60,7 +62,7 @@ public class BinaryTreeTest extends TestCase {
 		System.out.println("|");
 		System.out.println();
 
-		System.out.println("The elapsed time using In ORDER TRAVERSE is: " + binaryTree.getTime() + " nanoseconds.");
+		System.out.println("The elapsed time using IN ORDER TRAVERSE is: " + binaryTree.getTime() + " nanoseconds.");
 		System.out.println();
 
 		System.out.println("--------------------------------------------------------");

@@ -16,8 +16,6 @@ public class ArrayGen {
 
 		this.arraySize = arraySize;
 		this.random = new Random();
-
-		createNodeKeys();
 	}
 
 
