@@ -61,7 +61,7 @@ public class ArrayGen {
 				evenArray[i]=number;
 			}
 			else{
-				i--;
+				evenArray[i]=number+1;
 			}
 		}
 		dataArray = evenArray;
