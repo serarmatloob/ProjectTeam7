@@ -88,7 +88,7 @@ public class BinaryTree {
 
 	public void preOrderTraverseTree(Node focusNode) {
 
-		if (focusNode != null) {
+		if (focusNode != null && arrayList.size() < oddNumberToReturn) {
 
 			if (focusNode.getData() % 2 == 1) {
 
