@@ -45,12 +45,12 @@ public class BinaryTreeTest extends TestCase {
 		System.out.println("--------------------------------------------------------");
 
 		// Using preorder Traversal
-		binaryTree.findOdd();
+		binaryTree.findOddInOrder();
 		oddNumberArray = binaryTree.getValue();
 
 		// Print out the odd numbers found
 		System.out.println();
-		System.out.print("The odd numbers found using PRE ORDER TRAVERSE are: ");
+		System.out.print("The odd numbers found using In ORDER TRAVERSE are: ");
 
 		for (int num : oddNumberArray) {
 
@@ -60,7 +60,7 @@ public class BinaryTreeTest extends TestCase {
 		System.out.println("|");
 		System.out.println();
 
-		System.out.println("The elapsed time using PRE ORDER TRAVERSE is: " + binaryTree.getTime() + " nanoseconds.");
+		System.out.println("The elapsed time using In ORDER TRAVERSE is: " + binaryTree.getTime() + " nanoseconds.");
 		System.out.println();
 
 		System.out.println("--------------------------------------------------------");

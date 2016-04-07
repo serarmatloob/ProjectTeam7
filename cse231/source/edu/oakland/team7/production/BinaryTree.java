@@ -27,7 +27,7 @@ public class BinaryTree {
 		oddNumberArray = new int[oddNumberToReturn];
 		Arrays.fill(oddNumberArray, -1);
 
-		arrayList = new ArrayList<Integer>(); // initilized its initial cappacity
+		arrayList = new ArrayList<Integer>(); 
 		
 		buildBinaryTree();
 
@@ -120,10 +120,7 @@ public class BinaryTree {
 
 		if (focusNode != null && arrayList.size() < oddNumberToReturn) {
 
-			if (arrayList.size() < oddNumberToReturn) {
-
-				inOrderTraverseTree(focusNode.getLeftChild());
-			}
+			inOrderTraverseTree(focusNode.getLeftChild());
 
 			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) { 
 
@@ -132,13 +129,11 @@ public class BinaryTree {
 				if (oddNumber >= startRange && oddNumber <= endRange) {
 
 					arrayList.add(oddNumber);
+					System.out.println("Adding " + oddNumber + " to arrayList");
 				}
 			}
 
-			if (arrayList.size() < oddNumberToReturn) {
-
-				inOrderTraverseTree(focusNode.getRightChild());
-			}
+			inOrderTraverseTree(focusNode.getLeftChild());
 		}
 	}
 
@@ -147,15 +142,9 @@ public class BinaryTree {
 
 		if (focusNode != null && arrayList.size() < oddNumberToReturn) {
 
-			if (arrayList.size() < oddNumberToReturn) {
+			postOrderTraverseTree(focusNode.getLeftChild());
 
-				postOrderTraverseTree(focusNode.getLeftChild());
-			}
-
-			if (arrayList.size() < oddNumberToReturn) {
-
-				postOrderTraverseTree(focusNode.getRightChild());
-			}
+			postOrderTraverseTree(focusNode.getLeftChild());
 
 			if (focusNode.getData() % 2 == 1 && arrayList.size() < oddNumberToReturn) {
 
@@ -164,6 +153,7 @@ public class BinaryTree {
 				if (oddNumber >= startRange && oddNumber <= endRange) {
 
 					arrayList.add(oddNumber);
+					System.out.println("Adding " + oddNumber + " to arrayList");
 				}
 			}
 		}
@@ -208,8 +198,8 @@ public class BinaryTree {
 	
 	public void findOddInOrder() {
 
-		Arrays.fill(oddNumberArray, -1);
-		arrayList.clear();
+		// Arrays.fill(oddNumberArray, -1);
+		// arrayList.clear();
 
 		startTimeNano = System.nanoTime();
 
@@ -221,14 +211,15 @@ public class BinaryTree {
 
 	public void findOddPostOrder() {
 
-		Arrays.fill(oddNumberArray, -1);
-		arrayList.clear();
+		// Arrays.fill(oddNumberArray, -1);
+		// arrayList.clear();
 
 		startTimeNano = System.nanoTime();
 
 		postOrderTraverseTree(root);
 
 		endTimeNano = System.nanoTime();
+
 	}
 	
 }
