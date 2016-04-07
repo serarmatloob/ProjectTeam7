@@ -23,12 +23,13 @@ public class BinaryTreeTest extends TestCase{
 
 	}
 	public void testBinaryTree(){
-
-		binaryTree.searchOdd();
+		
+		binaryTree.buildBinaryTree();
+		binaryTree.searchOddPreOrder();
 
 		System.out.println("\n\nArray search time: " +  binaryTree.getTime() +" nanoseconds");
 
-		int[] oddNumber=binaryTree.getOddNumberArray();
+		int[] oddNumber=binaryTree.getValue();
 		
 		System.out.print("Odd numbers: ");
 		

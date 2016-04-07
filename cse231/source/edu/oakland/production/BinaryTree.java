@@ -21,7 +21,6 @@ public class BinaryTree {
 		oddNumberArray = new int[oddNumberToReturn];
 		Arrays.fill(oddNumberArray, -1);
 		arrayList = new ArrayList<>();
-		buildBinaryTree();
 	}
 	public void buildBinaryTree() {
 		for (int i = 0; i < keyArray.length; i++) {
@@ -56,11 +55,19 @@ public class BinaryTree {
 
 		}
 	}
-	public void searchOdd(){
+	public void searchOddPreOrder(){
 		startTime = System.nanoTime();
 		preOrderTraverseTree(root);
-		//inOrderTraverseTree(root);
-		//postOrderTraverseTree(root);
+		endTime = System.nanoTime();
+	}
+	public void searchOddInOrder(){
+		startTime = System.nanoTime();
+		inOrderTraverseTree(root);
+		endTime = System.nanoTime();
+	}
+	public void searchOddPostOrder(){
+		startTime = System.nanoTime();
+		postOrderTraverseTree(root);
 		endTime = System.nanoTime();
 	}
 	public void preOrderTraverseTree(Node focusNode) {
@@ -121,7 +128,7 @@ public class BinaryTree {
 		}
 	}
 
-	public int[] getOddNumberArray(){
+	public int[] getValue(){
 
 		int index = 0;
 
