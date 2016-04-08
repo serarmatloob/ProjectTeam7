@@ -1,8 +1,20 @@
 package edu.oakland.helper;
 import java.util.*;
 
+/**
+ * This class is responsible for generating arrays of ints to be used
+ * for building node keys in a binary tree as well as its data.
+ *
+ * @author Serar Matloob, Michael Frieze, Tiantian Ma, Jesse Emelian
+ * @version 1.0 - Date: 160407
+ * @since 1.0
+ */
 public class ArrayGen {
 
+	/**
+	* Instance variables and initial maximum and minimum values
+	* of possible random numbers for each element in an array.
+	*/
 	private int arraySize;
 	private int maxValue = 20000; // default value
 	private int minValue = 20; // default value
@@ -10,11 +22,26 @@ public class ArrayGen {
 	private int[] dataArray;
 	private Random random;
 
+	/**
+	* Constructor initializes array size and creates a Random() object that
+	* is assigned to a reference variable.
+	*
+	* @param arraySize A value of type int that represents the size of an array to build
+	*/
 	public ArrayGen(int arraySize) {
 		this.arraySize = arraySize;
 		this.random = new Random();
 	}
 
+	/**
+	* This method creates an int array that contains random values to be used as keys
+	* for nodes in a binary tree. The conditions of this array must be that no 
+	* duplicates are created. The int array object is created, filled, and stored
+	* in a reference that exist as an instance variable.
+	* 
+	* Also, the purpose of using LinkedhashSet to fill the int array, is 
+	* because of the usefullness of the .add() method. It prevents duplicates.
+	*/
 	public void createNodeKeys() {
 		Integer next;
 		Set<Integer> generated = new LinkedHashSet<Integer>();
@@ -32,6 +59,14 @@ public class ArrayGen {
 		}
 	}
 
+	/**
+	* This method creates an int array that contains random values to be used as the
+	* data for nodes in a binary tree. The int array object is created, filled, and
+	* stored in a reference that exist as an instance variable.
+	*
+	* The range of possible values in each element of
+	* the int array are determined by the instance variables maxValue and minValue.
+	*/
 	public void createRandomDataArray() {
 
 		this.dataArray = new int[arraySize];
@@ -43,6 +78,14 @@ public class ArrayGen {
 
 	}
 
+	/**
+	* This method creates an int array that contains random EVEN values to be used as
+	* the data for nodes in a binary tree. The int array object is created, filled, and
+	* stored in a reference that exist as an instance variable.
+	*
+	* The range of possible values in each element of
+	* the int array are determined by the instance variables maxValue and minValue.
+	*/
 	public void createEvenDataArray() {
 
 		int[] evenArray = new int[arraySize];
@@ -58,6 +101,14 @@ public class ArrayGen {
 		dataArray = evenArray;
 	}
 
+	/**
+	* This method creates an int array that contains random ODD values to be used as
+	* the data for nodes in a binary tree. The int array object is created, filled, and
+	* stored in a reference that exist as an instance variable.
+	*
+	* The range of possible values in each element of
+	* the int array are determined by the instance variables maxValue and minValue.
+	*/
 	public void createOddDataArray() {
 
 		int[] oddArray = new int[arraySize];
@@ -73,21 +124,45 @@ public class ArrayGen {
 		dataArray = oddArray;
 	}
 
+	/**
+	* This method returns a referene to an array object of type int that
+	* represents keys for a node in a binary tree.
+	*
+	* @return Returns the reference to an array object of type int containing node keys
+	*/
 	public int[] getKeyArray() {
 
 		return keyArray;
 	}
 
+	/**
+	* This method returns a referene to an array object of type int that
+	* represents data for a node in a binary tree.
+	*
+	* @return Returns the reference to an array object of type int containing data for nodes
+	*/
 	public int[] getDataArray() {
 
 		return dataArray;
 	}
 
+	/**
+	* This method assigns the minimum int value of possible random numbers
+	* to a reference that exist as an instance variable.
+	*
+	* @param minimum A value of type int that gets assigned to an instance variable
+	*/
 	public void setMinValue(int minimum) {
 
 		this.minValue = minimum;
 	}
 
+	/**
+	* This method assigns the maximum int value of possible random numbers
+	* to a reference that exist as an instance variable.
+	*
+	* @param maximum A value of type int that gets assigned to an instance variable
+	*/
 	public void setMaxValue(int maximum) {
 
 		this.maxValue = maximum;

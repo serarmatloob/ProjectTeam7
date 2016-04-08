@@ -5,7 +5,9 @@ import java.util.*;
 /**
  * This class is responsible for build binary tree and search desired numbers
  * by using different methods. It will be tested by Junit test class and finally  
- * merged with other JCF classes.
+ * merged with other JCF classes. To properly use this class, you must call 
+ * buildBinaryTree() before you can use methods such as searchOddPreOrder() or 
+ * use any of the get methods.
  *
  * @author Serar Matloob, Michael Frieze, Tiantian Ma, Jesse Emelian
  * @version 1.0 - Date 160407

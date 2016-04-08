@@ -1,7 +1,8 @@
 package edu.oakland.helper;
 
 /**
- * This class is responsible for generating nodes to fill a binary tree.
+ * This class represents a node that contains a key and its data
+ * for a binary tree.
  *
  * @author Serar Matloob, Michael Frieze, Tiantian Ma, Jesse Emelian
  * @version 1.0 - Date: 160407
@@ -15,21 +16,15 @@ public class Node {
     private Node rightChild;
 
     /**
-     * Constructor creates a node object and assigns a reference key value and a
-     * data value.
+     * Constructor assigns parameters to instance variables that
+     * represent a key and the data that this node can contain.
      *
-     * @param key reference value of a node
-     * @param data data value of a node
+     * @param key value of a node
+     * @param data value of a node
      */
     public Node(int key, int data) {
         this.key = key;
         this.data = data;
-    }
-
-    /**
-     * Default constructor for node object
-     */
-    public Node() {
     }
 
     /**

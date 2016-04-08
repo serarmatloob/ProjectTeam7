@@ -33,7 +33,7 @@ public class BinaryTreeTest extends TestCase{
 	*/
 	public void setUp(){
 
-		arraySize = 20; // number of array elements
+		arraySize = 20000; // number of array elements
 		startRange = 900; // start of range for the value an odd number must have
 		endRange = 9000; // end of range for the value an odd number must have;
 
@@ -55,7 +55,11 @@ public class BinaryTreeTest extends TestCase{
 	public void testBinaryTree(){
 		binaryTree.buildBinaryTree();
 		binaryTree.searchOddPreOrder();
-		//binaryTree.searchOddPostOrder();
+		// binaryTree.searchOddPostOrder();
+		// binaryTree.searchOddInOrder();
+
+		System.out.println();
+		System.out.format("The size of the array is %,d elements\n", arraySize);
 
 		System.out.println("\nArray search time: " +  binaryTree.getTime() +" nanoseconds");
 
@@ -66,6 +70,9 @@ public class BinaryTreeTest extends TestCase{
 		for(int i = 0;i<oddNumber.length;i++){
 			System.out.print(" [ "+oddNumber[i]+" ] ");
 		}
+
+		System.out.println();
+		System.out.println();
 
 		boolean isOddInRange;
 		
