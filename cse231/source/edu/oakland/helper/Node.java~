@@ -1,9 +1,10 @@
-spackage edu.oakland.helper;
+package edu.oakland.helper;
 
 /**
  * This class is responsible for generating nodes to fill a binary tree.
  *
  * @author Serar Matloob, Michael Frieze, Tiantian Ma, Jesse Emelian
+ * @version 1.0
  * @since 1.0
  */
 public class Node {

@@ -4,7 +4,7 @@ package edu.oakland.helper;
  * This class is responsible for generating nodes to fill a binary tree.
  *
  * @author Serar Matloob, Michael Frieze, Tiantian Ma, Jesse Emelian
- * @version 1.0
+ * @version 1.0 - Date: 160407
  * @since 1.0
  */
 public class Node {
