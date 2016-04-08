@@ -2,8 +2,9 @@ package edu.oakland.helper;
 import java.util.*;
 
 /**
- * This class is responsible for generating arrays of ints to be used
- * for building node keys in a binary tree as well as its data.
+ * This class is responsible for generating arrays of type int. The arrays
+ * represent the values of the keys and data contained in the nodes of a
+ * binary tree.
  *
  * @author Serar Matloob, Michael Frieze, Tiantian Ma, Jesse Emelian
  * @version 1.0 - Date: 160407
@@ -23,8 +24,9 @@ public class ArrayGen {
 	private Random random;
 
 	/**
-	* Constructor initializes array size and creates a Random() object that
-	* is assigned to a reference variable.
+	* Constructor assigns a parameter to an instance variable that represents the size
+	* of the array to be generated and creates a Random() object that is assigned to
+	* a reference that exist as an instance variable.
 	*
 	* @param arraySize A value of type int that represents the size of an array to build
 	*/
