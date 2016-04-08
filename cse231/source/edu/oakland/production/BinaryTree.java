@@ -2,7 +2,15 @@ package edu.oakland.production;
 import edu.oakland.helper.*;
 import java.util.*;
 
-
+/**
+ * This class is responsible for build binary tree and search desired numbers
+ * by using different methods. It will be tested by Junit test class and finally  
+ * merged with other JCF classes.
+ *
+ * @author Serar Matloob, Michael Frieze, Tiantian Ma, Jesse Emelian
+ * @version 1.0 - Date 160407
+ * @since 1.0
+ */
 public class BinaryTree {
 
 	private Node root;
@@ -15,6 +23,12 @@ public class BinaryTree {
 	private long startTime,endTime;
 	private ArrayList<Integer> arrayList;
 
+	/**
+	*Constructor for Binary tree class.
+	*Also conduct the arrayList and oddNumberArray for further using.
+	*@param keyArray key value array
+	*@param dataArray data value array
+	*/
 	public BinaryTree(int[] keyArray, int[] dataArray){
 		this.keyArray = keyArray;
 		this.dataArray = dataArray;
@@ -22,12 +36,22 @@ public class BinaryTree {
 		Arrays.fill(oddNumberArray, -1);
 		arrayList = new ArrayList<>();
 	}
+	
+	/**
+	*This buildBinaryTree method build the binary tree by adding Nodes in it. 
+	*/
 	public void buildBinaryTree() {
 		for (int i = 0; i < keyArray.length; i++) {
 			addNode(keyArray[i], dataArray[i]);
 		}
 	}
 
+	/**
+	*This method implement the business rules for the Binary Tree
+	*structure.
+	*@param key key value of a node
+	*@param data data value of a node
+	*/
 	public void addNode(int key, int data) {
 		Node newNode = new Node(key, data);
 		if (root == null) {
@@ -55,21 +79,43 @@ public class BinaryTree {
 
 		}
 	}
+	
+	/**
+	*This method conducts the seaching by using preorder traverse tree and 
+	*records the processing time.
+	*/
 	public void searchOddPreOrder(){
 		startTime = System.nanoTime();
 		preOrderTraverseTree(root);
 		endTime = System.nanoTime();
 	}
+	
+	/**
+	*This method conducts the seaching by using inorder traverse tree and 
+	*records the processing time.
+	*/
 	public void searchOddInOrder(){
 		startTime = System.nanoTime();
 		inOrderTraverseTree(root);
 		endTime = System.nanoTime();
 	}
+	
+	/**
+	*This method conducts the seaching by using postorder traverse tree and 
+	*records the processing time.
+	*/
 	public void searchOddPostOrder(){
 		startTime = System.nanoTime();
 		postOrderTraverseTree(root);
 		endTime = System.nanoTime();
 	}
+	
+	/**
+	*This method conducts the preorder traverse of the Binary Tree and meanwhile 
+	*searchs for the desired odd numbers.The found numbers are placed into an
+	*arraylist.
+	*@param focusNode root Node
+	*/
 	public void preOrderTraverseTree(Node focusNode) {
 
 		if (focusNode != null && arrayList.size()<oddNumberToReturn) {
@@ -88,6 +134,13 @@ public class BinaryTree {
 			preOrderTraverseTree(focusNode.getRightChild());
 		}
 	}
+	
+	/**
+	*This method conducts the inorder traverse of the Binary Tree and meanwhile 
+	*searchs for the desired odd numbers.The found numbers are placed into an
+	*arraylist.
+	*@param focusNode root Node
+	*/
 	public void inOrderTraverseTree(Node focusNode) {
 
 		if (focusNode != null&&arrayList.size()<oddNumberToReturn)  {
@@ -108,6 +161,13 @@ public class BinaryTree {
 			inOrderTraverseTree(focusNode.getRightChild());
 		}
 	}
+	
+	/**
+	*This method conducts the postorder traverse of the Binary Tree and meanwhile 
+	*searchs for the desired odd numbers.The found numbers are placed into an
+	*arraylist.
+	*@param focusNode root Node
+	*/
 	public void postOrderTraverseTree(Node focusNode) {
 
 		if (focusNode != null&& arrayList.size() < oddNumberToReturn) {
@@ -127,8 +187,12 @@ public class BinaryTree {
 			}
 		}
 	}
-
-	public int[] getValue(){
+	
+	/**
+	*Gets the desired odd numbers value from arrayList.
+	*@return int[] oddNumberArray;
+	*/
+	public int[] getValues(){
 
 		int index = 0;
 
@@ -140,12 +204,21 @@ public class BinaryTree {
 		return oddNumberArray;
 
 	}
+	
+	/**
+	*Calculate the searching time.
+	*@return long endTime-startTime ;
+	*/
 	public long getTime(){
 		return (endTime-startTime);
 	}
+	
+	/**
+	*Get the root of the Node.
+	*@return Node root;
+	*/
 	public Node getRoot(){
 		return root;
 	}
 
 }
-

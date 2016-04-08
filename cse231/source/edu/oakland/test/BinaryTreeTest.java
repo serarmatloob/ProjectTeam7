@@ -59,7 +59,7 @@ public class BinaryTreeTest extends TestCase{
 
 		System.out.println("\nArray search time: " +  binaryTree.getTime() +" nanoseconds");
 
-		int[] oddNumber=binaryTree.getValue();
+		int[] oddNumber=binaryTree.getValues();
 
 		System.out.print("Odd numbers: ");
 
