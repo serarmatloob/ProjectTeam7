@@ -26,6 +26,7 @@ public class BinaryTreeTest extends TestCase{
 		
 		binaryTree.buildBinaryTree();
 		binaryTree.searchOddPreOrder();
+		//binaryTree.searchOddPostOrder();
 
 		System.out.println("\n\nArray search time: " +  binaryTree.getTime() +" nanoseconds");
 
