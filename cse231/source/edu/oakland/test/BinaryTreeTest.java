@@ -61,7 +61,11 @@ public class BinaryTreeTest extends TestCase{
 		System.out.println();
 		System.out.format("The size of the array is %,d elements\n", arraySize);
 
-		System.out.println("\nArray search time: " +  binaryTree.getTime() +" nanoseconds");
+		System.out.println("\nArray search time:");
+		System.out.println(binaryTree.getTime() +" nanoseconds");
+		System.out.println((binaryTree.getTime() / 1000) + " microseconds");
+		System.out.println((binaryTree.getTime() / 1000000) + " milliseconds\n");
+
 
 		int[] oddNumber=binaryTree.getValues();
 
